@@ -1,0 +1,370 @@
+<app-cart-step
+  [orderStep]="orderStep"
+  (cartStepEmitor)="cartStepChange($event)"
+></app-cart-step>
+
+<div class="cart-main-wrap light-gray" *ngIf="orderStep === 1">
+  <div class="container">
+    <div class="row cart-tbl-wrap-row">
+      <div class="col-md-8 sm-p-0 cart-tbl-wrap-left">
+        <!-- Cat links -->
+        <div class="text-center" *ngIf="allCount?.totalCart === 0">
+          No data found
+        </div>
+        <div
+          class="scrollable-checkbox-item-w swiper cart_top_opt_slider"
+          *ngIf="allCount?.totalCart > 0"
+        >
+          <div
+            class="scrollable-checkbox-item light-gray pt-0 cart-header-select-box swiper-wrapper"
+          >
+            <div
+              class="form-check item swiper-slide"
+              [ngClass]="{ active: cartCheckboxItem.checked }"
+              *ngFor="let cartCheckboxItem of checkboxArr"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                [(ngModel)]="cartCheckboxItem.checked"
+                [id]="cartCheckboxItem.value"
+                (change)="cartSlectedBox(cartCheckboxItem.value)"
+              />
+              <label class="form-check-label" [for]="cartCheckboxItem.value">
+                <span class="lebel">{{ cartCheckboxItem.name }}</span>
+                <span
+                  class="d-block count"
+                  *ngIf="cartCheckboxItem.name === 'All Items'"
+                  >({{ allCount?.totalCart }} Items)</span
+                >
+                <span
+                  class="d-block count"
+                  *ngIf="cartCheckboxItem.name === 'Grocery Items Only'"
+                  >({{ allCount?.grocery }} Items)</span
+                >
+                <span
+                  class="d-block count"
+                  *ngIf="cartCheckboxItem.name === 'Non-Grocery Items Only'"
+                  >({{ allCount?.nonGrocery }} Items)</span
+                >
+                <span
+                  class="d-block count"
+                  *ngIf="cartCheckboxItem.name === 'Fast Delivery Only'"
+                  >({{ allCount?.fastDelivery }} Items)</span
+                >
+                <span
+                  class="d-block count"
+                  *ngIf="cartCheckboxItem.name === 'Free Delivery Items only'"
+                  >({{ allCount?.freeDelivery }} Items)</span
+                >
+              </label>
+            </div>
+          </div>
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+
+          <!-- If we need scrollbar -->
+          <div class="swiper-scrollbar"></div>
+        </div>
+        <!-- Cat links Ends -->
+
+        <!-- table select all sec -->
+        <div
+          *ngIf="allCount?.totalCart > 0"
+          class="tbl-select-all def-box d-flex justify-content-between align-items-center m-hide"
+        >
+          <div class="form-check form-checkbox">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+              [(ngModel)]="allChecked"
+              (change)="selectAllStoreProduct($event)"
+            />
+            <label class="form-check-label" for="flexCheckDefault">
+              Select All ({{ allSelectedProduct.length }} Products)
+            </label>
+          </div>
+          <a class="btn btn-trans" (click)="removeAllStoreProduct(content)"
+            >REMOVE</a
+          >
+        </div>
+        <!-- table select all sec Ends -->
+
+        <!-- cart table -->
+        <div class="cart-table bg-green" *ngIf="allCount?.totalCart > 0">
+          <div
+            class="cart-table-info d-flex justify-content-between align-items-center"
+          >
+            <h3 class="title">Groceries</h3>
+            <div class="button-info-w has-info-icon">
+              <a
+                (click)="groceries('combined')"
+                class="btn"
+                [ngClass]="{ active: selectedGroceies === 'combined' }"
+                >Combine & Deliver</a
+              >
+              <a
+                (click)="groceries('store')"
+                class="btn"
+                [ngClass]="{ active: selectedGroceies === 'store' }"
+                >Each Store Deliver</a
+              >
+              <a class="btn info-icon-btn">
+                <div class="icon icon-info"></div>
+              </a>
+            </div>
+          </div>
+          <div class="tbl bg-white" *ngFor="let cart of cardListArr">
+            <div class="tbl-head">
+              <div class="tr">
+                <div
+                  class="th d-flex justify-content-between align-items-center"
+                >
+                  <div class="label">
+                    <div class="form-check form-checkbox">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                        [(ngModel)]="cart.checked"
+                        [disabled]="cart.deliveryRules.length == 0"
+                        (change)="checkedByAllProductByStore(cart, $event)"
+                      />
+                    </div>
+                    <div class="graphic small-thumb"></div>
+                    <h2 class="title">
+                      <div class="icon icon-brand">
+                        <img src="assets/images/brand_img1.png" alt="" />
+                      </div>
+                      {{ cart?.storeName }}
+                      <i class="icon icon-right-arrow"></i>
+                      <span class="pill pill-pink m-hides"
+                      *ngIf="cart.deliveryRules.length > 0">Get it {{ cart?.maxDeliveryBy }}</span
+                      >
+                      <span class="pill pill-pink m-hides" *ngIf="cart.deliveryRules.length == 0">*Not deliverable in your location.</span>
+                    </h2>
+                  </div>
+                  <!-- <div class="vouchur-links">
+                    <a href="javascript:void(0)" class="link">
+                      <i class="icon icon-voucher"></i>
+                      <span class="m-hide"> You have 2 voucher to claim</span>
+                      <span class="m-view-ib">Get Voucher</span>
+                      <i class="icon icon-right-arrow"></i
+                    ></a>
+                  </div> -->
+                  <div class="free_delivery_opt sm-fs-12" *ngIf="cart.deliveryRules.length > 0">
+                    Get free delivery above QAR {{cart?.deliveryRules[0]?.minOrderValue}}.00
+                    <!-- <span class="pill pill-pink m-view-ib"
+                      >Get it Today by 5pm</span> -->
+                      <span class="percentage"> {{ cart.percentage }}%</span>
+                    <span class="progress">
+                      <span
+                        class="progress_highlight progress-bar"
+                        [style]="'width: '+cart.percentage+'%'"
+                      ></span
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tbl-body">
+              <div class="tr" *ngFor="let eachCart of cart?.products">
+                <div class="td checkbox">
+                  <div class="form-check form-checkbox">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                      (change)="checkedByStore(eachCart, $event)"
+                      [(ngModel)]="eachCart.checked"
+                      [disabled]="cart.deliveryRules.length == 0"
+                    />
+                  </div>
+                </div>
+                <div class="td prod-details">
+                  <div class="graphic thumb">
+                    <img
+                      [src]="
+                        getImageUrl(eachCart.primaryProductImage, 'originalURL')
+                      "
+                      alt=""
+                    />
+                  </div>
+                  <div class="prod-info">
+                    <h3 class="title">
+                      {{ eachCart.productDetails.productname }}
+                    </h3>
+                    <span class="light-txt"
+                      >{{ eachCart.selectedVariant?.packSize }}
+                      {{ eachCart.selectedVariant?.packSizeMeasureUnit }}</span
+                    >
+                    <!-- <a href="javascript:void(0)" class="link add-link">+Add schedule</a> -->
+                  </div>
+                </div>
+
+                <div class="td price">
+                  <ins class="price"
+                    >QAR
+                    {{
+                      eachCart.selectedVariant?.specialPrice
+                        ? eachCart.selectedVariant?.specialPrice
+                        : (eachCart.selectedVariant?.sellerPrice
+                          | number: "1.2-2")
+                    }}</ins
+                  >
+                  <span
+                    class="del m-hide"
+                    *ngIf="eachCart.selectedVariant?.specialPrice"
+                    >QAR
+                    <del>{{
+                      eachCart.selectedVariant?.sellerPrice | number: "1.2-2"
+                    }}</del></span
+                  >
+                  <div
+                    class="offer m-hide"
+                    *ngIf="eachCart.selectedVariant?.specialPrice"
+                  >
+                    {{
+                      eachCart.selectedVariant?.specialPrice
+                        ? (((eachCart.selectedVariant?.sellerPrice -
+                            eachCart.selectedVariant?.specialPrice) /
+                            eachCart.selectedVariant?.sellerPrice) *
+                            100 | number: "1.2-2")
+                        : "0"
+                    }}%
+                  </div>
+                </div>
+
+                <div class="td qty">
+                  <div class="qty-box">
+                    <a
+                      (click)="cartCount('decrease', eachCart, cart)"
+                      class="btn btn-qty-minus"
+                    >
+                      <i class="icon icon-minus"></i>
+                    </a>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name=""
+                      id=""
+                      [(ngModel)]="eachCart.quantity"
+                    />
+                    <a
+                      (click)="cartCount('increase', eachCart, cart)"
+                      class="btn btn-qty-plus"
+                    >
+                      <i class="icon icon-plus"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="td action">
+                  <a
+                    (click)="addRemoveWishList(eachCart, eachCart._id)"
+                    [ngClass]="{ active: eachCart.addedToWishlist }"
+                    class="btn btn-favarite"
+                  >
+                    <i class="icon icon-favarite"></i>
+                  </a>
+                  <a (click)="open(content, eachCart, 'S')" class="btn btn-del">
+                    <i class="icon icon-del"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- table 1 ends -->
+      </div>
+      <div class="col-md-4 voucher-code-w" *ngIf="allCount?.totalCart > 0">
+        <div class="voucher-sticky">
+          <app-delivery-information
+            [addressId]="addressId"
+            [deliveryInformation]="deliveryLocation"
+            [deliveryRulePage]="deliveryRulePage"
+            (cartEmitor)="afterUpdateAddress($event)"
+            [step]="1"
+          >
+          </app-delivery-information>
+          <app-order-summery
+            (emitor)="afterCheckout($event)"
+            (cartOrderEmitor)="afterAddNewAddress($event)"
+            [totalAmount]="totalAmount"
+            [totalSelectedProduct]="allSelectedProduct.length"
+            [selectedGroceies]="selectedGroceies"
+            [allProducts]="allSelectedProduct"
+            [deliveryInformation]="deliveryLocation"
+            [step]="1"
+          >
+          </app-order-summery>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-delivery
+  *ngIf="orderStep === 2"
+  (paymentEmitor)="paymentView($event)"
+  [pickupType]="selectedGroceies"
+  [deliveryRulePage]="deliveryRulePage"
+  [deliveryResult]="deliveryResult"
+  [deliveryInformation]="deliveryLocation"
+  [addressId]="addressId"
+  [totalAmount]="totalAmount"
+  [totalSelectedProduct]="allSelectedProduct.length"
+>
+</app-delivery>
+
+<app-payment
+  *ngIf="orderStep === 3"
+  [deliveryResult]="deliveryResult"
+  [addressId]="addressId"
+  [totalAmount]="totalCost"
+  [deliveryInformation]="deliveryLocation"
+  [totalSelectedProduct]="allSelectedProduct.length"
+>
+</app-payment>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirm delete</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">Are you sure you want to delete this?</div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="modal.close('Save click')"
+    >
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-danger"
+      (click)="confirmDelete()"
+    >
+      Delete
+    </button>
+  </div>
+</ng-template>
+
+<hr />
+
+<pre>{{ closeResult }}</pre>

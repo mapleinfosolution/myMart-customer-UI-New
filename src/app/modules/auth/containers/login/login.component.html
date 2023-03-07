@@ -1,0 +1,57 @@
+<div class="auth-form-wrap small m-center mt-65 mb-32 bg-white">
+  <h2 class="primary-title d-flex flex-wrap justify-content-between">Login
+    <span class="sub">Not have an Account? 
+      <a href="javascript:void(0)" class="link" [routerLink]="['/auth/signup']">Register</a>
+    </span>
+  </h2>
+  <div class="form-container">
+    <form autocomplete="off" [formGroup]="loginForm">
+      <div class="form-rows">
+        <div class="form-field">
+          <label for="" class="form-label">Email or Phone Number</label>
+          <div class="float-inp">
+            <i class="icon icon-email-outline" *ngIf="!passClicked"></i>
+            <i class="icon icon-phone-call" *ngIf="passClicked"></i>
+            
+              <app-email-mobile-input 
+                placeholder="Email or Phone Number"
+                formControlName="emailMobile"
+                [fieldValue] = "loginForm.value.emailMobile"
+              ></app-email-mobile-input>
+              <div *ngIf="submitted && f.emailMobile.errors" class="invalid-feedback">
+                <div *ngIf="f.emailMobile.errors.required">Email or Phone Number is required</div>
+                <div *ngIf="f.emailMobile.errors.emailMobileInvalid">Enter valid Email or Phone Number</div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-rows">
+        <div class="form-field">
+          <label for="" class="form-label-outline">Password</label>
+          <div class="float-inp">
+            <i class="icon icon-lock-outline"></i>
+              <app-password-input 
+                placeholder="Enter Password" 
+                formControlName="password"
+                (passwordClicked)="passwordClicked($event)"
+              ></app-password-input>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-rows">
+        <div class="form-field text-right mb-20">
+          <a href="javascript:void(0)" class="link bold" [routerLink]="['/auth/forgot-password']">Forgot Password?</a>
+        </div>
+      </div>
+      <div class="form-rows">
+        <div class="form-field">
+          <button type="submit" class="btn btn-primary btn-block" (click)="submitLogin()">Login</button>
+        </div>
+      </div>
+    </form>
+    <!-- <app-signin-other-section></app-signin-other-section> -->
+  </div>
+</div>

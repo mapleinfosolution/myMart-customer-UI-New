@@ -1,0 +1,331 @@
+<div class="cart-main-wrap light-gray">
+  <div class="container">
+    <div class="row cart-tbl-wrap-row">
+      <div class="col-md-8 sm-p-0 cart-tbl-wrap-left">
+        <!-- cart table -->
+        <div class="cart-table order-cart-tbl bg-green">
+          <div
+            class="cart-table-info d-flex justify-content-between align-items-center"
+          >
+            <h3 class="title">Groceries</h3>
+          </div>
+          <div
+            class="tbl bg-white brb-0"
+            *ngFor="let delivery of deliveryProuctList; let i = index"
+          >
+            <div class="tbl-head">
+              <div class="tr">
+                <div
+                  class="th d-flex justify-content-between align-items-center"
+                >
+                  <div class="label">
+                    <h2 class="title">
+                      <div class="icon icon-brand">
+                        <img src="assets/images/brand_img1.png" alt="" />
+                      </div>
+                      {{ delivery.storeName }}
+                    </h2>
+                  </div>
+                  <div class="tbl-head-right-info">
+                    Package {{ i + 1 }} Of {{ deliveryProuctList.length }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tbl-extra-option border-bottom">
+              <!-- choose delivery option -->
+              <div class="cart-choose-option" *ngIf="!deliveryResult.adminDeliveryRules">
+                <h3 class="cart-label">Choose your delivery option</h3>
+                <div class="scrollable-checkbox-item-w swiper delivery_opt_slider">
+                <div class="scrollable-checkbox-item pt-0 swiper-wrapper">
+                  <div
+                    class="form-check item swiper-slide"
+                    [ngClass]="{ active: deliveryRule.checked }"
+                    *ngFor="let deliveryRule of delivery.deliveryRules"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      [id]="deliveryRule.ruleName"
+                      checked=""
+                      [(ngModel)]="deliveryRule.checked"
+                      (change)="deliveryRuleChange(deliveryRule, i)"
+                    />
+                    <label
+                      class="form-check-label"
+                      [for]="deliveryRule.ruleName"
+                    >
+                      <span class="lebel">{{ deliveryRule.ruleName }}</span>
+                      <!-- <span class="d-block count"
+                        >{{ pickupType }} Pickups</span
+                      > -->
+                      <span class="d-block light">{{
+                        deliveryRule.ruleType
+                      }}</span>
+                      <span
+                        class="d-block light"
+                        *ngIf="deliveryRule.deliveryFee"
+                        >Delivery Fee: {{ deliveryRule.deliveryFee }}</span
+                      >
+                    </label>
+                  </div>
+                </div>
+                <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+
+          <!-- If we need scrollbar -->
+          <div class="swiper-scrollbar"></div>
+              </div>
+                <div *ngIf="!delivery.deliveryRules.length" class="text-danger">Sorry, we don't deliver in your location</div>
+              </div>
+              <div class="cart-choose-option" *ngIf="deliveryResult.adminDeliveryRules && selectedSlot.length > 0">
+                <h3 class="cart-label">Choose your delivery option</h3>
+                <div class="scrollable-checkbox-item pt-0">
+                  <div
+                    class="form-check item"
+                    [ngClass]="{ active: selectedSlot[0].isChecked }"
+                  >
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      value=""
+                      [id]="selectedSlot[0].timeSlot"
+                      name="test_radio"
+                      [checked]="selectedSlot[0].isChecked"
+                    />
+                    <label class="form-check-label" [for]="selectedSlot[0].timeSlot">
+                      <span class="lebel">QAR {{selectedSlot[0].deliveryCharge}} </span>
+                      <span class="d-block count"
+                        >{{ selectedSlot[0].timeSlot }} Hours Express Delivery</span
+                      >
+                      <span class="d-block light">Express</span>
+                    </label>
+                  </div>
+                </div>
+                <div *ngIf="selectedSlot.length == 0" class="text-danger">Sorry, we don't deliver in your location</div>
+              </div>
+              <!-- choose delivery option Ends -->
+
+              <!-- time slot -->
+              <div
+                class="time-slot bg-light-yellow"
+                *ngIf="delivery.deliveryRules && delivery.deliveryRules.length && !deliveryResult.adminDeliveryRules"
+              >
+                <div class="time">
+                  <span class="light"
+                    >Select {{ selectedRule(delivery.deliveryRules).timeTodeliver }} slot
+                    :</span
+                  >
+                  {{ selectedRule(delivery.deliveryRules).minTime }}-{{
+                    selectedRule(delivery.deliveryRules).maxTime
+                  }},
+                  {{ today | date: "fullDate" }}
+                </div>
+              </div>
+              <div
+                class="time-slot bg-light-yellow"
+                *ngIf="selectedSlot.length > 0 && deliveryResult.adminDeliveryRules"
+              >
+                <div class="time">
+                  <span class="light"
+                    >Select HOUR slot
+                    :</span
+                  >
+                  {{ selectedTimeRange }},
+                  {{ selectedDateSlot }}
+                </div>
+              </div>
+              <!-- time slot Ends -->
+            </div>
+            <div class="tbl-body">
+              <div class="tr" *ngFor="let product of delivery.products">
+                <div class="td prod-details">
+                  <div class="graphic thumb">
+                    <img
+                      [src]="
+                        getImageUrl(product.primaryProductImage, 'originalURL')
+                      "
+                      alt=""
+                    />
+                  </div>
+                  <div class="prod-info">
+                    <h3 class="title">
+                      {{ product.productDetails.productname }}
+                    </h3>
+                    <span class="light-txt"
+                      >{{ product.selectedVariant?.packSize }}
+                      {{ product.selectedVariant?.packSizeMeasureUnit }}</span
+                    >
+                    <div class="m-view price-qty-space">
+                      <div class="qty-sec">
+                        <div class="qty">
+                          <span class="light">Qty :</span>
+                          {{ product.cartItemDetails.quantity }}
+                        </div>
+                      </div>
+                        <div class="price-sec">
+                          <ins class="price"
+                      >QAR
+                      {{
+                        product.selectedVariant?.specialPrice
+                          ? product.selectedVariant?.specialPrice
+                          : (product.selectedVariant?.sellerPrice
+                            | number: "1.2-2")
+                      }}</ins>
+                        </div>
+                        
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="td price m-hide">
+                  <ins class="price"
+                    >QAR
+                    {{
+                      product.selectedVariant?.specialPrice
+                        ? product.selectedVariant?.specialPrice
+                        : (product.selectedVariant?.sellerPrice
+                          | number: "1.2-2")
+                    }}</ins>
+                  <span
+                    class="del m-hide"
+                    *ngIf="product.selectedVariant?.specialPrice"
+                    >QAR
+                    <del>{{
+                      product.selectedVariant?.sellerPrice | number: "1.2-2"
+                    }}</del></span
+                  >
+                  <div
+                    class="offer m-hide"
+                    *ngIf="product.selectedVariant?.specialPrice"
+                  >
+                    {{
+                      product.selectedVariant?.specialPrice
+                        ? (((product.selectedVariant?.sellerPrice -
+                            product.selectedVariant?.specialPrice) /
+                            product.selectedVariant?.sellerPrice) *
+                            100 | number: "1.2-2")
+                        : "0"
+                    }}%
+                  </div>
+                </div>
+
+                <div class="td qty m-hide">
+                  <span class="light">Qty :</span>
+                  {{ product.cartItemDetails.quantity }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- cart table -->
+
+        <!-- cart table -->
+        <!-- cart table -->
+      </div>
+      <div class="col-md-4 voucher-code-w">
+        <div class="delivery-info-box key-val-box bg-white">
+          <a (click)="placeOrder('1')" class="btn btn-block btn-pink big mb-20"
+            >Place Order
+          </a>
+          <app-delivery-information
+            [deliveryRulePage]="deliveryRulePage"
+            [deliveryInformation]="deliveryLocation"
+          ></app-delivery-information>
+        </div>
+        <!-- order summery -->
+        <app-order-summery
+          [totalAmount]="totalAmount"
+          [deliveryCost]="selectedDeliveryTotalCost()"
+          [totalSelectedProduct]="totalSelectedProduct"
+          [step]="2"
+          [deliveryProuctList]="deliveryProuctList"
+          (paymentEmitor)="paymentView($event)"
+        >
+        </app-order-summery>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- cart-main-wrap Ends -->
+
+<!-- order popups -->
+<div class="modal w-big auto_open_first">
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Select Delivery Time (FBM)</h5>
+      <button
+      (click)="closeModal()"
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="choose_time_slot center">
+        <div class="scrollable-checkbox-item display-row">
+          <div [ngClass]="{'active': time.isChecked }"
+            class="form-check item"
+            *ngFor="let time of deliverySlotArr"
+          >
+            <input
+              class="form-check-input"
+              type="radio"
+              value=""
+              [id]="time.timeSlot"
+              name="test_radio"
+              [checked]="time.isChecked"
+              (change)="timeSlotSelect(time)"
+            />
+            <label class="form-check-label" [for]="time.timeSlot">
+              <span class="lebel">QAR {{time.deliveryCharge}} </span>
+              <span class="d-block count"
+                >{{ time.timeSlot }} Hours Express Delivery</span
+              >
+              <span class="d-block light">Express</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <hr class="light" />
+      <div class="delivery-time-lists mt-60 mb-30">
+        
+        <div class="delivery-time-lists-slider" [ngStyle]="{'transform': 'translateX(' + timeNavSwipeValue + 'px)'}">
+          <div class="delivery-time-list" *ngFor="let eachSlot of selectedDeliverySlotDateArr" [ngStyle]="{'width': timeNavItemWidth+'px', 'max-width': timeNavItemWidth+'px'}">
+            <div class="time-col">
+              <div class="day">{{eachSlot.date}}</div>
+              <ul class="time-slot-lists">
+                <li class="ts-item" (click)="selectTimeRange(timeRange, eachSlot)" [ngClass]="{'active': selectedTimeRange === timeRange &&  eachSlot.date === selectedDateSlot }" *ngFor="let timeRange of eachSlot.timeBlock">
+                  <div class="time">
+                  {{ timeRange }} ({{selectedDeliverySlots.timeSlot}} hours)
+                    <!-- <span class="light block">1 Product Unavailable</span> -->
+                  </div>
+                  <div class="price colr">
+                    <span class="pink-text big">+QAR {{selectedDeliverySlots.deliveryCharge}} </span>
+                    <!-- <span class="light block">Filling Fast</span> -->
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="time-nav">
+          <a href="javascript:void(0)" (click)="timeNavPrev()" class="btn btn-prev"></a>
+          <a href="javascript:void(0)" (click)="timeNavNext()" class="btn btn-next"></a>
+        </div>
+      </div>
+
+      <div class="form-action-btn modal-time-slot-footer">
+        <a (click)="closeModal()" class="btn btn-green minw-270 sm-block"
+          >Continue</a
+        >
+      </div>
+    </div>
+  </ng-template>
+</div>
+<!-- order popups -->

@@ -1,0 +1,26 @@
+<div class="account-delivery-sec text-block">
+  <h3 class="primary-title bottom-line">Address <span (click)="openAddressAddPopup({})"
+      class="btn btn-pink-light m-hide">+ Create New Address</span></h3>
+
+  <div class="delivery-address-lists">
+    <ng-container *ngIf="addressList && addressList.length; else noAddressList">
+      <ng-container *ngFor="let item of addressList">
+        <div class="addres-list-item" [ngClass]="{'active': item.Default}">
+          <p class="type">{{item.Type}}</p>
+          <h2 class="name">{{item.Name}}</h2>
+          <p>{{item.MobileNo}}</p>
+          <p>{{item.Address}}</p>
+          <div class="actions">
+            <a *ngIf="!item.Default" href="javascript:void(0)" title="Check" class="btn btn-blue-light edit-btn" (click)="makePrimary(item)"><i class="icon icon-check-blue"></i></a>
+            <a href="javascript:void(0)" title="Edit" class="btn btn-yellow-light edit-btn" (click)="editClick(item)"><i class="icon icon-edit"></i></a>
+            <a *ngIf="!item.Default" href="javascript:void(0)" title="Trash" class="btn btn-pink-light delete-btn" (click)="deleteClick(item)"><i class="icon icon-trash"></i></a>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-template #noAddressList>No address found</ng-template>
+  </div>
+  <div class="mobile-create-address-w m-view">
+    <span class="btn btn-pink-light" (click)="openAddressAddPopup({})">+ Create New Address</span>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+    <!-- <a href="javascript:void(0)" class="btn btn-promo-code m-hide">
+        <i class="icon icon-promocode"></i>
+        I Have promo code
+        <i class="icon icon-triangle-arrow-right"></i>
+    </a> -->
+    <div class="voucher-code-inp-w">
+        <input type="text" class="form-control voucher-code-inp m-view" name="" id="" placeholder="Enter voucher code here">
+    </div>
+    <div class="order-summery key-val-box bg-white">
+        <h2 class="title m-hide">Order Summary</h2>
+        <div class="form-check form-checkbox m-view">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label for="" class="form-check-label">Select all</label>
+        </div>
+        <ul class="key-val-lists">
+            <li class="m-hide">
+                <span class="key">Subtotal ({{totalSelectedProduct}} Items)</span>
+                <span class="val">QAR {{totalAmount | number : '1.2-2'}}</span>
+            </li>
+            <li class="m-hide" *ngIf="deliveryCost">
+                <span class="key">Delivery Fee</span>
+                <span class="val">QAR {{deliveryCost | number : '1.2-2'}}</span>
+            </li>
+            <li class="m-hide" *ngIf="nonDeliveryProductCost > 0">
+                <span class="key">Non-Delivery Cost</span>
+                <span class="val">QAR {{nonDeliveryProductCost | number : '1.2-2'}}</span>
+            </li>
+            <li class="top-line">
+                <span class="key"><b class="text-black">Total</b></span>
+                <span class="val total-price">QAR {{ ((totalAmount + (deliveryCost ? (+deliveryCost) : 0)) - nonDeliveryProductCost) | number : '1.2-2' }}</span>
+                <span class="m-view"> Est. Delivery Fee QAR {{ totalAmount | number : '1.2-2'}}</span>
+            </li>
+        </ul>
+        <button class="btn btn-checkout" *ngIf="step === 1"  [disabled]="totalAmount === 0" (click)="checkout()">CHECKOUT</button>
+
+        <a (click)="placeOrder()" *ngIf="step === 2" class="btn btn-block btn-pink big mb-20">Place Order </a>
+
+        <a (click)="backToList()" class="link link-yellow m-hide cursor-pointer"><i class="icon icon-left-arrow"></i> Back to Shopping</a>
+    </div>
+

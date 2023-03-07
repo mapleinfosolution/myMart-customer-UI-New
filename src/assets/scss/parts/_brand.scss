@@ -1,0 +1,12 @@
+.brand-carosual { 
+    padding: 0 29px 0 29px;
+    .carosual-item { margin: 5px 25px; filter: grayscale(100%); transition: all .5s;
+        &:hover {filter: grayscale(0);}
+    }
+}
+.popular-brand { padding: 23px 31px 66px;
+    .head { margin-bottom: 43px;}
+}
+.recomanded_prods_sec .head {
+	padding: 0 25px;
+}

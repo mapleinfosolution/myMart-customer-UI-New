@@ -1,0 +1,110 @@
+.site-footer { background: #fff; padding: 68px 90px; position: relative; 
+    .scroll_top {
+        cursor: pointer; transition: all .3s;
+        width: 40px; height: 40px; text-align: center; line-height: 40px; position: absolute;
+        top: -12px; right: 20px;
+        background:#EE9623 url(../images/arrow-up_white.png) no-repeat 50% 15px;
+        &:hover { transform: scale(1.2); opacity: .8;}
+    }
+    .title { font-size: $base-font; font-weight: 600; color: #5A5A5A; margin-bottom: 49px;}
+    .footer-top {
+        ul {padding: 0; margin: 0; list-style: none;
+            li { font-size: 12px; font-weight: 400; color: #0A142F; margin-bottom: 15px;
+                a { font-size: inherit; color: #0A142F;}
+            }
+        }
+    }
+}
+.footer-top.row .col:nth-child(1) {
+	flex: 0 0 265px;
+}
+.footer-top.row .col:nth-child(2) {
+    flex: 0 0 243px;
+}
+.footer-top.row .col:nth-child(3) {
+    flex: 0 0 249px;
+}
+.footer-top.row .col:nth-child(4) {
+    flex: 0 0 255px;
+}
+.footer-chat {
+    padding: 0px 0 25px;
+    display: flex; justify-content: flex-end;
+    
+}
+
+.footer-bot { position: relative;
+    justify-content: space-between;
+    .logo { margin-bottom: 44px;}
+    p { font-size: $base-font; color: #5A5A5A; margin-bottom: 0;}
+    a { color: #5A5A5A;}
+    .label { font-size: 14px; color: 000000; margin-bottom: 12px;}
+
+    .download-now {
+        padding-top: 10px;
+         width: 350px;
+        .input-group {margin-bottom: 17px;}
+        .form-control { background: #F4F4F4; border-radius: 7px 0 0 7px; font-size: 12px; color: #9A9A9A;}
+        .btn-primary  { font-size: 12px; border-radius: 0 7px 7px 0; padding: 10px 15px;}
+        .label { display: block; width: 100%; margin-bottom: 10px;}
+        .app_links { display: flex; flex-wrap: wrap; justify-content: space-between;
+            a { margin-bottom: 10px;}
+        }
+    }
+    .scan { text-align: center; width: 120px; padding: 14px 0 0 0;
+        
+    }
+
+    
+}
+
+.social-links {
+    margin-top: 28px;
+    a {  display: inline-block;}
+    a + a { margin-left: 27px;}
+    .facebook{width: 8px; height: 18px;}
+    .twitter{width: 20px; height: 15px;}
+    .instagram{width: 20px; height: 20px;}
+    .whatapps{width: 20px; height: 20px;}
+    .icon { width: 100%; height: 20px;}
+}
+
+.marker_icon { background: url(../images/Location.png) no-repeat 0 0; padding-left: 30px;}
+.phone_icon { background: url(../images/Call.png) no-repeat 0 0; padding-left: 30px;}
+.email_icon { background: url(../images/Message.png) no-repeat -5px 0; padding-left: 30px;}
+
+.responsive-footer { display: none;
+    justify-content: space-between; background: #fff; padding: 5px 10px;
+    .round-btn { font-size: 10px;  width: 62px; height: 50px; border-radius: 8px;  cursor: pointer;
+         text-align: center; display: inline-block;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        color: #5a5a5a;
+        &.active, &:hover { color: #F9004B; background:rgba(249, 0, 75, 0.2);
+            .icon {color: #F9004B;}
+        }
+        .icon { width: 14px; height: 14px; display: block; margin: 0 auto; fill: #C0C0C0; 
+            
+        }
+
+        &:nth-child(1):hover{
+            .icon {fill: #F9004B;  }
+        }
+        &:nth-child(2):hover{
+            .icon path { fill:#F9004B ; stroke:#F9004B ;}
+        }
+        &:nth-child(3):hover{
+            .icon path{ stroke:#F9004B ; fill: #F9004B; }
+        }
+        &:nth-child(4):hover{
+            .icon path { fill:#F9004B !important;}
+        }
+        &:nth-child(5):hover{
+            .icon path {fill:#F9004B !important;}
+        }
+        
+    }
+}
+.responsive-footer-wrap {
+    margin-bottom: 60px;
+    .responsive-footer { position: fixed; bottom: 0; width: 100%; z-index: 999;}
+}

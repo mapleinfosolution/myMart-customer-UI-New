@@ -1,0 +1,78 @@
+.primary-title {
+    font-weight: 600;font-size: 18px;line-height: 26px; color: #000000; padding: 0 0 15px 0; margin: 0 0 18px 0 ; 
+     border-bottom: 1px solid #EEEEEE;
+}
+
+.primary-title-sub {font-weight: 600; font-size: 18px; line-height: 16px; color: #000000; margin-bottom: 35px;
+    
+}
+.form-container {
+    label {font-weight: 500; font-size: 16px; line-height: 16px; color: #000000; margin-bottom: 35px;}
+}
+
+.choose-card { 
+    display: flex; flex-wrap: wrap; padding-bottom: 10px;
+    .form-check { 
+        position: relative;
+        max-width: 241px; width: 100%; padding: 0;  margin-right: 10px; padding-bottom: 10px;
+        .form-check-label {
+            background: #F5F5F5; border-radius: 8.54128px; padding: 16px 31px;  width: 100%;
+        }
+       
+        .form-check-input { display: none;}
+        .title {font-weight: 600;  font-size: 17.6px;  line-height: 26px; letter-spacing: -0.320298px; color: #000000; margin-bottom: 8px;
+            .icon { margin-right: 10px;}
+        }
+        label { margin-bottom: 0;}
+        p {font-size: 15.0857px;  line-height: 23px; font-weight: 400;  opacity: 0.65;}
+        a.more-btns {
+            top: 14px; right: 12px; position: absolute;background: #F7F8F9;   border-radius: 3.2px; width: 28px; height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg width='29' height='21' viewBox='0 0 29 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.25 3.51836C0.25 1.75105 1.68269 0.318359 3.45 0.318359H25.05C26.8173 0.318359 28.25 1.75105 28.25 3.51836V17.1184C28.25 18.8857 26.8173 20.3184 25.05 20.3184H3.45C1.68269 20.3184 0.25 18.8857 0.25 17.1184V3.51836Z' fill='%23F7F8F9'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M17.75 10.3184C17.75 11.1434 18.425 11.8184 19.25 11.8184C20.075 11.8184 20.75 11.1434 20.75 10.3184C20.75 9.49336 20.075 8.81836 19.25 8.81836C18.425 8.81836 17.75 9.49336 17.75 10.3184ZM16.25 10.3184C16.25 9.49336 15.575 8.81836 14.75 8.81836C13.925 8.81836 13.25 9.49336 13.25 10.3184C13.25 11.1434 13.925 11.8184 14.75 11.8184C15.575 11.8184 16.25 11.1434 16.25 10.3184ZM10.25 8.81836C11.075 8.81836 11.75 9.49336 11.75 10.3184C11.75 11.1434 11.075 11.8184 10.25 11.8184C9.425 11.8184 8.75 11.1434 8.75 10.3184C8.75 9.49336 9.425 8.81836 10.25 8.81836Z' fill='%2397A3B4'/%3E%3C/svg%3E%0A");
+            width: 29px; height: 21px;
+        }
+        .form-check-input:checked[type="radio"] ~ .form-check-label { background: rgba(238, 150, 35, 0.2);   border: 1.25714px solid #EE9623;}
+    }
+}
+
+.label-float-fields {
+    label { position: absolute; font-size: 14px; line-height: 70.3%; font-weight: 400; background: #fff; left: 20px; top: -6px; padding: 0 5px; 
+        margin: 0; color: #2B2B2B;}
+    .form-control {border: 1.25px solid #B0B0B0; border-radius: 12.5px; padding: 15px 24px; margin-bottom: 28px;
+        font-size: 16px; color: #5A5A5A; font-weight: 600;
+    }
+    .form-field { position: relative;}
+    
+
+}
+.form-check-label strong {font-weight: 600;  font-size: 18px; line-height: 26px; color: #000000; display: inline-block; margin-bottom: 3px;}
+.save-card-check .form-check-label { margin-bottom: 35px; color: #2B2B2B; font-weight: 400;}
+.save-card-check .form-check-input { margin-top: 10px;}
+.payment-method-sec { padding: 32px 35px;}
+.user-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0px; border-top: 1px solid #EEEEEE; padding-top: 30px;
+    .btn {
+      min-width: 164px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 18px;
+      padding: 11px;
+    }
+    .btn-trans {
+      color: #5a5a5a;
+    }
+  }
+  .label-float-fields { max-width: 491px;}
+
+@media only screen and (max-width: 992px) { 
+    .payment-method-sec { padding: 30px 12px;}
+    .primary-title-sub {font-weight: 600;  font-size: 12.4407px;  line-height: 11px; margin-bottom: 24px;}
+    .form-container label { font-weight: 500; font-size: 11.0584px;  line-height: 11px; margin-bottom: 24px;}
+    .choose-card .form-check .form-check-input:checked[type="radio"] ~ .form-check-label {}
+    .choose-card .form-check .form-check-label { padding: 11px 21px;
+        .title {font-weight: 600; font-size: 12.1642px;  line-height: 18px;}
+    }
+    .choose-card .form-check {max-width: 166px;}
+}

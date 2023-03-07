@@ -1,0 +1,52 @@
+<div class="order-traking-sec bg-white rd-10 px-32 py-15 mb-20 ">
+  <h2 class="title-16 m-hide">Tracking Details</h2>
+  <div class="head">
+    <div class="info-left">
+      <div class="graphic"><img
+          [src]="getImageUrl(selectedItemData.productImage)" alt=""></div>
+      <div class="delivery-partner">
+        <h2 class="title-18">Deliver Info</h2>
+        <p class="t-gray">Delivery Partner : Ninjavan</p>
+      </div>
+    </div>
+    <div class="delivery-traking">
+      <h2 class="label">Tracking Number</h2>
+      <p class="number">1522835677 <span class="icon"><svg width="13" height="17" viewBox="0 0 13 17" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1.32717 3.55038V11.6617C1.32704 12.4642 1.63219 13.2368 2.1807 13.8226C2.72922 14.4085 3.48004 14.7637 4.28086 14.8164L4.48823 14.8227H10.0694C9.93867 15.1925 9.69654 15.5126 9.37636 15.739C9.05617 15.9655 8.67366 16.0871 8.28149 16.0871H3.85601C2.84998 16.0871 1.88514 15.6875 1.17377 14.9761C0.462391 14.2647 0.0627444 13.2999 0.0627444 12.2939V5.33954C0.0625387 4.94716 0.184037 4.56437 0.410496 4.24393C0.636955 3.92349 0.957225 3.68118 1.32717 3.55038ZM10.8103 0.914062C11.3134 0.914062 11.7958 1.11389 12.1515 1.46957C12.5072 1.82526 12.707 2.30768 12.707 2.8107V11.6617C12.707 12.1647 12.5072 12.6471 12.1515 13.0028C11.7958 13.3585 11.3134 13.5583 10.8103 13.5583H4.48823C3.98521 13.5583 3.50279 13.3585 3.1471 13.0028C2.79141 12.6471 2.59159 12.1647 2.59159 11.6617V2.8107C2.59159 2.30768 2.79141 1.82526 3.1471 1.46957C3.50279 1.11389 3.98521 0.914063 4.48823 0.914062H10.8103ZM10.8103 2.17849H4.48823C4.32055 2.17849 4.15975 2.24509 4.04118 2.36366C3.92262 2.48222 3.85601 2.64302 3.85601 2.8107V11.6617C3.85601 11.8293 3.92262 11.9901 4.04118 12.1087C4.15975 12.2273 4.32055 12.2939 4.48823 12.2939H10.8103C10.978 12.2939 11.1388 12.2273 11.2574 12.1087C11.3759 11.9901 11.4426 11.8293 11.4426 11.6617V2.8107C11.4426 2.64302 11.3759 2.48222 11.2574 2.36366C11.1388 2.24509 10.978 2.17849 10.8103 2.17849Z"
+              fill="#EE9623" />
+          </svg>
+        </span></p>
+    </div>
+  </div>
+  <div class="body-sec" *ngIf="this.selectedItemData?.orderStatusLog.length">
+    <div class="steps">
+      <div class="item">
+        <span class="num">1</span>
+        <span class="label">Processing</span>
+      </div>
+      <div class="item">
+        <span class="num">1</span>
+        <span class="label">Packed</span>
+      </div>
+      <div class="item">
+        <span class="num">1</span>
+        <span class="label">Shipped</span>
+      </div>
+      <div class="item">
+        <span class="num">1</span>
+        <span class="label">Delivered</span>
+      </div>
+    </div>
+
+    <div class="delivery-status">
+      <div [class]="this.selectedItemData?.orderStatusLog.length == (i + 1) ? 'item active' : 'item'" *ngFor="let statusData of this.selectedItemData?.orderStatusLog; let i=index">
+        <span class="time"> {{statusData.time | date:'medium'}}</span>
+        <span class="label">{{capitalizeFirstLetter(statusData.status)}}</span>
+        <!-- <span class="link">Leave your delivery feedback here</span> -->
+        <span>Your Package have been {{statusData.status}}</span>
+      </div>
+    </div>
+  </div>
+</div>

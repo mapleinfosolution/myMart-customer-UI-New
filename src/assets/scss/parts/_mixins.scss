@@ -1,0 +1,103 @@
+@function asset($type, $file) {
+    @return url($asset-base-path + '/' + $type + '/' + $file);
+}
+@function image($file) {
+    @return asset('images', $file);
+}
+@function em($pixels, $context: $browser-context) {
+    @return #{$pixels/$context}em;
+  }
+// Font mixin
+@mixin font ($variant) {
+	@if $variant == "bold-14" {
+		font: bold 14px $font-family-primary;
+	} @else if $variant == "bold-11" {
+		font: bold 11px/1 $font-family-primary;       
+	} @else if $variant == "bold-10" {
+		font: bold 10px/15px $font-family-primary;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;      
+	} @else if $variant == "light-25" {
+		font: 100 25px $font-family-primary;
+		letter-spacing: -0.01em;
+		
+	} @else if $variant == "light-70"{
+		font: 100 70px $font-family-primary;
+	} @else {
+		font: normal 18px/1 $font-family-primary;
+	}
+}
+
+@function black($opacity){
+	@return rgba(0,0,0,$opacity)
+}
+
+@function white($opacity){
+	@return rgba(255,255,255,$opacity)
+}
+
+@mixin bg($filename,$repeat: no-repeat,$position:0 0, $color: transparent) {
+	background: $color url(#{$imagedir}#{$filename}#{$ver}) $repeat $position;
+}
+
+@mixin bg-image($filename) {
+	background-image: url(#{$imagedir}#{$filename}#{$ver});
+}
+
+@mixin m-bg($filename,$repeat: no-repeat,$position:0 0, $color: transparent) {
+	background: $color url(#{$m-imagedir}#{$filename}#{$m-ver}) $repeat $position;
+}
+@mixin m-bg-image($filename) {
+	background-image: url(#{$m-imagedir}#{$filename}#{$m-ver});
+}
+
+@mixin background-gradient($startColor: #3C3C3C, $endColor: #999999, $position: top) {
+	background-color: $startColor;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+	background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+	background-image:    -moz-linear-gradient(top, $startColor, $endColor);
+	background-image:     -ms-linear-gradient(top, $startColor, $endColor);
+	background-image:      -o-linear-gradient(top, $startColor, $endColor);
+	background-image:         linear-gradient(top, $startColor, $endColor);
+	filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr=#{$startColor}, EndColorStr=#{$endColor});
+}
+
+@mixin flip($scaleX: -1) {
+	-moz-transform:    scaleX($scaleX);
+	-o-transform:      scaleX($scaleX);
+	-webkit-transform: scaleX($scaleX);
+	transform:         scaleX($scaleX);
+	filter:            FlipH;
+	-ms-filter:        "FlipH";
+}
+@mixin font-face($fontFamily: myFont, $eotFileSrc: 'myFont.eot', $woffFileSrc: 'myFont.woff', $ttfFileSrc: 'myFont.ttf') {
+  font-family: $fontFamily;
+  src: url($eotFileSrc)  format('eot'),
+	   url($woffFileSrc) format('woff'),
+	   url($ttfFileSrc)  format('truetype');
+}
+
+@mixin resize($direction: both) {
+	-webkit-resize: $direction;
+	-moz-resize:    $direction;
+	resize:         $direction;
+}
+
+// Requires inline-block or block for proper styling
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// media query
+@mixin media-min($size) {
+    @media (min-width: $size) {
+      @content;
+    }
+}
+@mixin media-max($size) {
+    @media (max-width: $size) {
+      @content;
+    }
+}

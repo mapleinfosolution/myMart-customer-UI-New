@@ -1,0 +1,292 @@
+<!-- <div class="my-account-wrap">
+    <div class="container"> -->
+<!-- user-navigation -->
+<!-- <app-user-profile-nav class="user-nav-sec"></app-user-profile-nav> -->
+<!-- user-navigation Ends-->
+<!-- user-content-area -->
+<!--<main class="user-content-area">-->
+<!--<app-user-personal-info></app-user-personal-info>-->
+<!-- user personal information ends -->
+<!--<app-user-recent-orders></app-user-recent-orders>-->
+<!-- user order table -->
+<!--</main>-->
+<!-- user-content-area Ends -->
+<!-- </div>
+</div> -->
+
+<!-- my account mobile ui  -->
+<div class="my-account-mobile-w m-view">
+  <div class="my-account-profile-info ">
+    <div *ngIf="!userDetails.profileImage" class="graphic small" style="background-image: url(/assets/images/user-profile-img.jpg);">{{showName()}}</div>
+    <img *ngIf="userDetails.profileImage" src="{{imageUrl(userDetails.profileImage)}}" alt="Profile Image" width="100" height="100" class="profile-img-graph" />
+    <div class="info">
+      <h3 class="title user-name">{{userDetails.firstname}} {{userDetails.lastname}}<i class="icon icon-shield"></i></h3>
+      <p class="desc">My Account</p>
+    </div>
+
+  </div>
+
+  <div class="ma-utility-btns mob-sec">
+    <a class="btn bg-light-yellow" routerLink="/my-account/wishlist">
+      <div class="num">1</div>
+      <p class="label">My Wishlist</p>
+    </a>
+    <a class="btn bg-light-pink" routerLink="/my-account/wishlist">
+      <div class="num">2</div>
+      <p class="label">Followed Store</p>
+    </a>
+    <a class="btn bg-light-blue">
+      <div class="num">2</div>
+      <p class="label">Recently Viewed</p>
+    </a>
+    <a class="btn bg-light-gray">
+      <div class="num">2</div>
+      <p class="label">My Vouchers</p>
+    </a>
+  </div>
+
+  <div class="ma-user-order-btns mob-sec">
+    <h2 class="m-primary-title">My Orders <a href="javascript:void(0)" class="link" routerLink="/my-account/my-order">View my order ></a></h2>
+    <div class="ma-user-order-btns-lists">
+      <a href="javascript:void(0)" class="item" routerLink="/my-account/my-order">
+        <div class="graphic" style="background-image:url(/assets/images/my-order-icon.png) ;">
+          <span class="badge badge-blue">15</span>
+        </div>
+        <p>All</p>
+      </a>
+
+
+      <a href="javascript:void(0)" class="item" routerLink="/my-account/my-order" [queryParams]="{ inx:1, status: 'toPay' }">
+        <div class="graphic" style="background-image:url(/assets/images/my-profile-icon-2.png) ;">
+          <span class="badge badge-blue">15</span>
+        </div>
+        <p>To Ship </p>
+      </a>
+      <a href="javascript:void(0)" class="item" routerLink="/my-account/my-order" [queryParams]="{ inx:2, status: 'toShip' }">
+        <div class="graphic" style="background-image:url(/assets/images/my-profile-icon-3.png) ;">
+          <span class="badge badge-blue">15</span>
+        </div>
+        <p>To Receive</p>
+      </a>
+      <a href="javascript:void(0)" class="item" routerLink="/my-account/my-order" [queryParams]="{ inx:3, status: 'toReceive' }">
+        <div class="graphic" style="background-image:url(/assets/images/my-profile-icon-4.png) ;">
+          <span class="badge badge-blue">15</span>
+        </div>
+        <p>To Review</p>
+      </a>
+      <a href="javascript:void(0)" class="item" routerLink="/my-account/my-order" [queryParams]="{ inx:4, status: 'toReview' }">
+        <div class="graphic" style="background-image:url(/assets/images/my-profile-icon-5.png) ;">
+          <span class="badge badge-blue">15</span>
+        </div>
+        <p>Return &
+          Cancelation</p>
+      </a>
+
+
+    </div>
+  </div>
+
+  <!-- recent activity -->
+  <div class="ma-recent-activity mob-sec">
+    <h2 class="m-primary-title">Recent Activity </h2>
+    <div class="ma-recent-activity-lists">
+      <div class="item">
+        <div class="graphic"></div>
+        <div class="info">
+          <h3 class="title">Crocodile T-Shirt</h3>
+          <p>Delivered by 27 Apr, 19:20</p>
+          <p><a href="javascript:void(0)">Leave your delivery feedback here</a></p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="graphic"></div>
+        <div class="info">
+          <h3 class="title">Crocodile T-Shirt</h3>
+          <p>Delivered by 27 Apr, 19:20</p>
+          <p><a href="javascript:void(0)">Leave your delivery feedback here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- recent activity Ends -->
+
+  <!-- Favourites -->
+  <div class="ma-favourites mob-sec">
+    <h2 class="m-primary-title">Favourites</h2>
+    <div class="ma-favourites-lists" routerLink="/">
+      <div class="item">
+        <div class="graphic-icon"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M9.72222 0H1.38889C1.02053 0 0.667263 0.146329 0.406796 0.406796C0.146329 0.667263 0 1.02053 0 1.38889V9.72222C0 10.0906 0.146329 10.4438 0.406796 10.7043C0.667263 10.9648 1.02053 11.1111 1.38889 11.1111H9.72222C10.0906 11.1111 10.4438 10.9648 10.7043 10.7043C10.9648 10.4438 11.1111 10.0906 11.1111 9.72222V1.38889C11.1111 1.02053 10.9648 0.667263 10.7043 0.406796C10.4438 0.146329 10.0906 0 9.72222 0ZM8.33333 8.33333H2.77778V2.77778H8.33333V8.33333ZM23.6111 0H15.2778C14.9094 0 14.5562 0.146329 14.2957 0.406796C14.0352 0.667263 13.8889 1.02053 13.8889 1.38889V9.72222C13.8889 10.0906 14.0352 10.4438 14.2957 10.7043C14.5562 10.9648 14.9094 11.1111 15.2778 11.1111H23.6111C23.9795 11.1111 24.3327 10.9648 24.5932 10.7043C24.8537 10.4438 25 10.0906 25 9.72222V1.38889C25 1.02053 24.8537 0.667263 24.5932 0.406796C24.3327 0.146329 23.9795 0 23.6111 0ZM22.2222 8.33333H16.6667V2.77778H22.2222V8.33333ZM9.72222 13.8889H1.38889C1.02053 13.8889 0.667263 14.0352 0.406796 14.2957C0.146329 14.5562 0 14.9094 0 15.2778V23.6111C0 23.9795 0.146329 24.3327 0.406796 24.5932C0.667263 24.8537 1.02053 25 1.38889 25H9.72222C10.0906 25 10.4438 24.8537 10.7043 24.5932C10.9648 24.3327 11.1111 23.9795 11.1111 23.6111V15.2778C11.1111 14.9094 10.9648 14.5562 10.7043 14.2957C10.4438 14.0352 10.0906 13.8889 9.72222 13.8889ZM8.33333 22.2222H2.77778V16.6667H8.33333V22.2222ZM19.4444 13.8889C16.3806 13.8889 13.8889 16.3806 13.8889 19.4444C13.8889 22.5083 16.3806 25 19.4444 25C22.5083 25 25 22.5083 25 19.4444C25 16.3806 22.5083 13.8889 19.4444 13.8889ZM19.4444 22.2222C17.9125 22.2222 16.6667 20.9764 16.6667 19.4444C16.6667 17.9125 17.9125 16.6667 19.4444 16.6667C20.9764 16.6667 22.2222 17.9125 22.2222 19.4444C22.2222 20.9764 20.9764 22.2222 19.4444 22.2222Z"
+              fill="black" />
+          </svg>
+        </div>
+        <p>Trending Categories</p>
+      </div>
+
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.0416 25.8333H11.9166C10.8116 25.8333 9.75175 25.3943 8.97035 24.6129C8.18895 23.8315 7.74996 22.7717 7.74996 21.6667V12.2917C7.74996 11.1866 8.18895 10.1268 8.97035 9.34539C9.75175 8.56399 10.8116 8.125 11.9166 8.125H23.375C24.48 8.125 25.5398 8.56399 26.3212 9.34539C27.1026 10.1268 27.5416 11.1866 27.5416 12.2917V15.4167" stroke="#F9004B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 7.08325V9.16659" stroke="#F9004B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21.2916 7.08325V9.16659" stroke="#F9004B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.74996 13.3333H27.5416" stroke="#F9004B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24.9375 21.2947L23.375 22.8572" stroke="#F9004B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M23.375 27.9167C26.2514 27.9167 28.5833 25.5848 28.5833 22.7083C28.5833 19.8319 26.2514 17.5 23.375 17.5C20.4985 17.5 18.1666 19.8319 18.1666 22.7083C18.1666 25.5848 20.4985 27.9167 23.375 27.9167Z" stroke="#F9004B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <p>Scheduled Cart</p>
+      </div>
+
+      <div class="item">
+        <div class="graphic-icon">
+
+
+<svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M25.2294 20.7731C24.9057 21.0868 24.7569 21.5405 24.8307 21.9854L25.9418 28.1346C26.0355 28.6558 25.8155 29.1832 25.3793 29.4844C24.9519 29.7969 24.3832 29.8344 23.917 29.5844L18.3815 26.6973C18.189 26.5948 17.9753 26.5398 17.7566 26.5336H17.4179C17.3004 26.5511 17.1854 26.5886 17.0804 26.6461L11.5437 29.5469C11.2699 29.6844 10.96 29.7332 10.6563 29.6844C9.91637 29.5444 9.42268 28.8395 9.54392 28.0959L10.6563 21.9467C10.73 21.498 10.5813 21.0418 10.2576 20.7231L5.74442 16.3486C5.36696 15.9824 5.23573 15.4325 5.40821 14.9363C5.57569 14.4414 6.00313 14.0802 6.51931 13.999L12.731 13.0978C13.2034 13.0491 13.6184 12.7616 13.8309 12.3367L16.568 6.72491C16.633 6.59992 16.7167 6.48494 16.818 6.38745L16.9305 6.29996C16.9892 6.23497 17.0567 6.18123 17.1317 6.13748L17.2679 6.08749L17.4804 6H18.0066C18.4765 6.04874 18.8902 6.32996 19.1064 6.7499L21.8798 12.3367C22.0798 12.7454 22.4685 13.0291 22.9172 13.0978L29.1289 13.999C29.6538 14.0739 30.0925 14.4364 30.2662 14.9363C30.4299 15.4375 30.2887 15.9874 29.9038 16.3486L25.2294 20.7731Z" fill="#EE9623"/>
+  </svg>
+  
+
+        </div>
+        <p>My Reviews</p>
+      </div>
+    </div>
+  </div>
+  <!-- Favourites Ends -->
+
+  <!-- order menu -->
+  <div class="ma-order-menu">
+    <h2 class="m-primary-title">Other Menu </h2>
+    <div class="ma-order-menu-lists">
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M19.8333 0.083252H8.7222V3.55547H10.1111V1.47214H19.8333C20.25 1.47214 20.5278 1.74992 20.5278 2.16659V9.80547C20.5278 10.2221 20.25 10.4999 19.8333 10.4999H10.8055V15.361H7.12498L4.55554 17.3749V15.361H2.4722C2.05554 15.361 1.77776 15.0833 1.77776 14.6666V7.0277C1.77776 6.61103 2.05554 6.33325 2.4722 6.33325H11.5V4.94436H2.4722C1.29165 4.94436 0.38887 5.84714 0.38887 7.0277V14.6666C0.38887 15.8471 1.29165 16.7499 2.4722 16.7499H3.16665V20.2916L7.54165 16.7499H12.1944V11.8888H19.8333C21.0139 11.8888 21.9166 10.986 21.9166 9.80547V2.16659C21.9166 0.98603 21.0139 0.083252 19.8333 0.083252Z"
+              fill="#EE9623" />
+          </svg>
+
+        </div>
+        <p>Languages </p>
+      </div>
+
+      
+      <!-- row 2 -->
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_857_50711)">
+            <path d="M21.1452 5.13421C21.6451 5.0003 22.1665 4.96616 22.6795 5.03375C23.1926 5.10134 23.6873 5.26933 24.1354 5.52813C24.5836 5.78693 24.9763 6.13146 25.2913 6.54206C25.6063 6.95266 25.8373 7.42128 25.9712 7.92116L29.8658 22.4535C29.9997 22.9533 30.0338 23.4747 29.9662 23.9877C29.8986 24.5008 29.7306 24.9955 29.4718 25.4437C29.213 25.8918 28.8685 26.2846 28.4579 26.5996C28.0473 26.9145 27.5787 27.1456 27.0788 27.2794L18.0846 29.691C17.5845 29.8253 17.0629 29.8598 16.5495 29.7924C16.0361 29.725 15.541 29.5571 15.0926 29.2983C14.6441 29.0394 14.2511 28.6947 13.9359 28.2839C13.6207 27.8731 13.3896 27.4042 13.2558 26.904L9.36263 12.3717C9.22872 11.8718 9.19459 11.3505 9.26218 10.8374C9.32977 10.3243 9.49776 9.82962 9.75656 9.38149C10.0154 8.93335 10.3599 8.54058 10.7705 8.2256C11.1811 7.91062 11.6497 7.67961 12.1496 7.54575L21.1452 5.13421ZM9.3483 17.8596L11.873 27.2737C12.1211 28.207 12.6172 29.0556 13.3088 29.7296L12.674 29.6953C11.6305 29.6404 10.6515 29.1734 9.95231 28.3968C9.25312 27.6202 8.89103 26.5977 8.94566 25.5542L9.3483 17.8596ZM21.7012 7.21045L12.7055 9.62343C12.247 9.74635 11.856 10.0463 11.6184 10.4574C11.3809 10.8685 11.3163 11.3571 11.4389 11.8157L15.332 26.3495C15.3929 26.5767 15.4979 26.7897 15.6411 26.9763C15.7843 27.163 15.9628 27.3196 16.1665 27.4372C16.3702 27.5548 16.5951 27.6312 16.8284 27.6619C17.0616 27.6926 17.2986 27.677 17.5258 27.6161L26.5228 25.2046C26.9814 25.0817 27.3724 24.7817 27.6099 24.3706C27.8475 23.9595 27.912 23.471 27.7895 23.0123L23.8949 8.47712C23.772 8.01854 23.472 7.62753 23.061 7.39002C22.6499 7.1525 22.1613 7.08792 21.7026 7.21045H21.7012ZM8.02289 15.7418L7.51421 25.4797C7.4612 26.4799 7.68616 27.4313 8.12176 28.2595L7.52854 28.0288C7.0454 27.8434 6.60352 27.5646 6.22812 27.2084C5.85272 26.8522 5.55117 26.4256 5.34067 25.9528C5.13017 25.48 5.01486 24.9705 5.00131 24.4531C4.98777 23.9358 5.07625 23.4209 5.26172 22.9378L8.02289 15.7418ZM14.991 11.234C15.1728 11.1853 15.3624 11.1728 15.5489 11.1973C15.7355 11.2219 15.9155 11.2829 16.0784 11.377C16.2414 11.4711 16.3843 11.5963 16.4989 11.7456C16.6135 11.8949 16.6975 12.0653 16.7463 12.247C16.795 12.4288 16.8075 12.6184 16.7829 12.805C16.7584 12.9916 16.6974 13.1715 16.6033 13.3345C16.5092 13.4975 16.384 13.6403 16.2347 13.7549C16.0854 13.8695 15.915 13.9536 15.7332 14.0023C15.5515 14.0511 15.3619 14.0635 15.1753 14.039C14.9887 14.0144 14.8088 13.9534 14.6458 13.8593C14.3166 13.6693 14.0764 13.3564 13.9779 12.9893C13.8795 12.6222 13.931 12.231 14.1209 11.9018C14.3109 11.5726 14.6239 11.3324 14.991 11.234Z" fill="url(#paint0_linear_857_50711)"/>
+            </g>
+            <defs>
+            <linearGradient id="paint0_linear_857_50711" x1="17.5" y1="-7.41294" x2="-7.32531" y2="17.5865" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#04BEFE"/>
+            <stop offset="1" stop-color="#4481EB"/>
+            </linearGradient>
+            <clipPath id="clip0_857_50711">
+            <rect width="25" height="25" fill="white" transform="translate(4.99995 5)"/>
+            </clipPath>
+            </defs>
+            </svg>
+            
+
+        </div>
+        <p>User Guides </p>
+      </div>
+      <!-- row 3 -->
+
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.8155 15.6897L1.20687 19.3104V3.27594C1.20687 3.00158 1.31586 2.73845 1.50987 2.54445C1.70387 2.35044 1.967 2.24146 2.24136 2.24146H17.7586C18.033 2.24146 18.2961 2.35044 18.4901 2.54445C18.6841 2.73845 18.7931 3.00158 18.7931 3.27594V15.6897H5.8155ZM5.09963 13.6208H16.7241V4.31042H3.27584V15.0535L5.09963 13.6208ZM8.44825 17.7587H19.0383L20.862 19.1915V8.44835H21.8965C22.1709 8.44835 22.434 8.55734 22.628 8.75135C22.822 8.94535 22.931 9.20847 22.931 9.48283V23.4484L18.3224 19.8277H9.48274C9.20837 19.8277 8.94525 19.7187 8.75125 19.5247C8.55724 19.3307 8.44825 19.0675 8.44825 18.7932V17.7587Z" fill="black"/>
+            </svg>
+            
+            
+
+        </div>
+        <p>FAQ        </p>
+      </div>
+      <!-- row 4 -->
+
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.0208 3.56242C18.763 3.56242 23.4375 8.2369 23.4375 13.9791C23.4375 19.7213 18.763 24.3958 13.0208 24.3958C7.27865 24.3958 2.60417 19.7213 2.60417 13.9791C2.60417 8.2369 7.27865 3.56242 13.0208 3.56242ZM13.0208 0.958252C5.82943 0.958252 0 6.78768 0 13.9791C0 21.1705 5.82943 26.9999 13.0208 26.9999C20.2122 26.9999 26.0417 21.1705 26.0417 13.9791C26.0417 6.78768 20.2122 0.958252 13.0208 0.958252ZM14.3229 17.8853H11.7187V20.4895H14.3229V17.8853ZM11.7187 15.2812H14.3229L14.974 7.46867H11.0677L11.7187 15.2812Z" fill="#FF517B"/>
+            </svg>
+            
+        </div>
+        <p>FAQ        </p>
+      </div>
+      <!-- row 5 -->
+
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5 22.9166C18.253 22.9166 22.9167 18.2529 22.9167 12.4999C22.9167 6.74695 18.253 2.08325 12.5 2.08325C6.74703 2.08325 2.08333 6.74695 2.08333 12.4999C2.08333 18.2529 6.74703 22.9166 12.5 22.9166Z" stroke="#2D81BA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.46875 9.37486C9.71365 8.67868 10.197 8.09164 10.8333 7.71771C11.4695 7.34378 12.2176 7.20709 12.945 7.33185C13.6724 7.45662 14.3321 7.83478 14.8074 8.39937C15.2826 8.96396 15.5428 9.67853 15.5417 10.4165C15.5417 12.4999 12.4167 13.5415 12.4167 13.5415" stroke="#2D81BA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.5 17.7083H12.51" stroke="#2D81BA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            
+            
+        </div>
+        <p>Need Help?        </p>
+      </div>
+      <!-- row 6 -->
+
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.5 3.19L19.5 6.3V11C19.5 15.52 16.52 19.69 12.5 20.93C8.47995 19.69 5.49995 15.52 5.49995 11V6.3L12.5 3.19ZM12.5 1L3.49995 5V11C3.49995 16.55 7.33995 21.74 12.5 23C17.66 21.74 21.5 16.55 21.5 11V5L12.5 1ZM11.5 7H13.5V9H11.5V7ZM11.5 11H13.5V17H11.5V11Z" fill="#5A5A5A"/>
+            </svg>
+            
+            
+            
+        </div>
+        <p>Privacy Policy</p>
+      </div>
+      <!-- row 7 -->
+
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_857_50750)">
+            <path d="M6.91666 0C5.20311 0 3.79166 1.41146 3.79166 3.125V17.7083H0.666656V21.875C0.666656 23.5885 2.07811 25 3.79166 25H18.4073C19.229 24.9869 20.013 24.6525 20.5911 24.0683C21.1692 23.4842 21.4955 22.6968 21.5 21.875V7.29167H25.6667V3.125C25.6667 1.41146 24.2552 0 22.5417 0H6.91666ZM6.91666 2.08333H19.6125C19.4874 2.41661 19.4212 2.76906 19.4167 3.125V21.875C19.4167 22.4646 18.9646 22.9167 18.375 22.9167C17.7885 22.925 17.3417 22.4604 17.3333 21.875L17.301 17.7083H5.87499V3.125C5.87499 2.53542 6.32707 2.08333 6.91666 2.08333ZM22.5417 2.08333C23.1312 2.08333 23.5833 2.53542 23.5833 3.125V5.20833H21.5V3.125C21.5 2.53542 21.9521 2.08333 22.5417 2.08333ZM2.74999 19.7917H15.25V21.9073C15.2542 22.2656 15.3281 22.5948 15.4458 22.9167H3.79166C3.20207 22.9167 2.74999 22.4646 2.74999 21.875V19.7917Z" fill="#EB5757"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_857_50750">
+            <rect width="26" height="25" fill="white"/>
+            </clipPath>
+            </defs>
+            </svg>
+            
+        </div>
+        <p>Terms & Condition</p>
+      </div>
+      <!-- row 8 -->
+
+      <div class="item">
+        <div class="graphic-icon">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.833328 2.83325C0.833328 1.72868 1.72876 0.833252 2.83333 0.833252H22.1667C23.2712 0.833252 24.1667 1.72868 24.1667 2.83325V22.1666C24.1667 23.2712 23.2712 24.1666 22.1667 24.1666H2.83333C1.72876 24.1666 0.833328 23.2712 0.833328 22.1666V2.83325Z" stroke="#EE9623" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.27765 12.5H18.7221" stroke="#EE9623" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.27765 7.05542H18.7221" stroke="#EE9623" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.66663 18.3333H13.9583" stroke="#EE9623" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            
+            
+        </div>
+        <p>About MyMart</p>
+      </div>
+      <!-- row 9 -->
+
+    </div>
+
+  </div>
+  <!-- order menu Ends-->
+</div>
+<main class="user-content-area m-hide">
+  <app-user-personal-info [userDetails]="userDetails" [defaultAddressList]="defaultAddressList"></app-user-personal-info>
+  <app-user-recent-orders [orderList]="orderList"></app-user-recent-orders>
+</main>

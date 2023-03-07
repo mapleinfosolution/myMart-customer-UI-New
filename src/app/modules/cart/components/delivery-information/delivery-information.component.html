@@ -1,0 +1,27 @@
+<div class="delivery-info-box key-val-box bg-white">
+    <h2 class="title m-hide">Delivery Information</h2>
+
+    <ul class="key-val-lists mb-0" *ngIf="(deliveryInformation | json) != '{}'">
+        <li class="">
+            <span class="key txt-dark"><i class="icon icon-marker"></i> {{deliveryInformation?.Name}}</span>
+            <span class="val"><a *ngIf="step===1 && isLoggedIn" class="link link-yellow cursor-pointer" (click)="editAddress()">Edit</a></span>
+            <span class="desc">
+                <span class="pill pill-green">{{deliveryInformation?.Type}}</span>
+                {{deliveryInformation?.HouseNo}} <br/> {{deliveryInformation?.Address}}
+            </span>
+        </li>
+        <li class="">
+            <span class="key txt-dark"><i class="icon icon-file"></i>  Bill to the same address</span>
+            <!-- <span class="val"><a href="javascript:void(0)" class="link link-yellow">Edit</a></span> -->
+        </li>
+        <li class="" *ngIf="deliveryInformation.MobileNo">
+            <span class="key txt-dark"><i class="icon icon-phone"></i> {{deliveryInformation?.MobileNo}}</span>
+            <!-- <span class="val"><a href="javascript:void(0)" class="link link-yellow">Edit</a></span> -->
+        </li>
+        <li class="mb-0" *ngIf="deliveryInformation.Email">
+            <span class="key txt-dark"><a href="mailto:mail@mail.com"><i class="icon icon-email"></i>{{deliveryInformation?.Email}}</a></span>
+            <!-- <span class="val"><a href="javascript:void(0)" class="link link-yellow">Edit</a></span> -->
+        </li>
+        
+    </ul>
+</div>  

@@ -1,0 +1,103 @@
+<div class="modal-body address-map-gw" [formGroup]="addressDetails">
+  <div class="address-choose-type" id="address_choose_indicators">
+    <a href="javascript:void(0)" class="btn" [ngClass]="{'selected hovered': headerAddressOpt == 'via_map'}"
+      (click)="updateAddressOpt($event, 'via_map')">Choose via Map</a>
+    <a href="javascript:void(0)" class="btn" [ngClass]="{'selected hovered': headerAddressOpt == 'via_blue_plate'}"
+      (click)="updateAddressOpt($event, 'via_blue_plate')">Choose via Blue Plate</a>
+    <a *ngIf="loginData" href="javascript:void(0)" class="btn"
+      [ngClass]="{'selected hovered': headerAddressOpt == 'via_save_address'}"
+      (click)="updateAddressOpt($event, 'via_save_address')">Choose from save address</a>
+    <span class="indicator"></span>
+  </div>
+
+  <h2 class="accordion-tabs" (click)="updateAddressOpt($event, 'via_map')"
+    [ngClass]="{'active': headerAddressOpt == 'via_map'}">Choose via Map <span class="arrow_down"></span></h2>
+  <div class="choose_via_map" [ngClass]="{'display-none': (headerAddressOpt !== 'via_map')}">
+    <div class="options">
+      <!-- <div class="custom-location-box">
+        <i class="icon icon-location-target" (click)="getCurrentLocation()"></i>
+        <span>Define my current location</span>
+      </div> -->
+      <div class="location-search-input">
+        <i class="icon icon-location-search"></i>
+        <input type="text" class="form-control" name="" #addresstext placeholder="Search Location"
+          formControlName="typedAddress" />
+        <div class="locate-me-w"><span class="btn btn-locate-me" (click)="getCurrentLocation()"><i
+              class="icon icon-location-target pos-right"></i> Locate Me</span></div>
+      </div>
+    </div>
+    <div class="map">
+      <agm-map [ngClass]="{'big-map': (headerAddressOpt !== 'via_blue_plate')}" [latitude]="lat" [longitude]="lng"
+        [zoom]="16" (mapReady)="mapReadyHandler($event)">
+        <agm-marker [latitude]="lat" [longitude]="lng" (dragEnd)="centerChanged($event)"
+          [markerDraggable]="markerDraggble">
+        </agm-marker>
+      </agm-map>
+    </div>
+  </div>
+  <h2 class="accordion-tabs" (click)="updateAddressOpt($event, 'via_blue_plate')"
+    [ngClass]="{'active': headerAddressOpt == 'via_blue_plate'}">Choose via Blue Plate <span class="arrow_down"></span>
+  </h2>
+  <div class="choose-via-blue-plate" [ngClass]="{'display-none': (headerAddressOpt !== 'via_blue_plate')}">
+    <h2 class="sub-title">Blue Plate address</h2>
+    <p>Please enter your blue plate details to retrieve your location from the database of<br />
+      Ministry of Municipality & Environment</p>
+    <div class="form-container inline">
+
+      <div class="form-field">
+        <label for="">Street</label>
+        <input type="text" name="" class="form-control" placeholder="Enter Street" formControlName="street"
+          (input)="debounceBluePlate()" />
+      </div>
+      <div class="form-field">
+        <label for="">Building No.</label>
+        <input type="text" name="building" class="form-control" placeholder="Enter Building No"
+          formControlName="building" (input)="debounceBluePlate()" />
+      </div>
+      <div class="form-field">
+        <label for="">Zone</label>
+        <input type="text" name="zone" class="form-control" placeholder="Enter Zone" formControlName="zone"
+          (input)="debounceBluePlate()" />
+      </div>
+    </div>
+    <div class="map">
+      <agm-map [ngClass]="{'big-map': (headerAddressOpt !== 'via_blue_plate')}" [latitude]="lat" [longitude]="lng"
+        [zoom]="16" (mapReady)="mapReadyHandler($event)">
+        <agm-marker [latitude]="lat" [longitude]="lng" (dragEnd)="centerChanged($event)"
+          [markerDraggable]="markerDraggble">
+        </agm-marker>
+      </agm-map>
+    </div>
+  </div>
+  <h2 class="accordion-tabs" (click)="updateAddressOpt($event, 'via_save_address')"
+    [ngClass]="{'active': headerAddressOpt == 'via_save_address'}" *ngIf="loginData">Choose from save address <span
+      class="arrow_down"></span></h2>
+  <div class="choose-via-save-address" [ngClass]="{'display-none': (headerAddressOpt !== 'via_save_address')}">
+    <div class="delivery-address-lists">
+      <ng-container *ngIf="addressList && addressList.length; else noAddressList">
+        <ng-container *ngFor="let item of addressList">
+          <div class="addres-list-item" [ngClass]="{'active': item.Default}">
+            <p class="type">{{item.Type}}</p>
+            <h2 class="name">{{item.Name}}</h2>
+            <p>{{item.MobileNo}}</p>
+            <p>{{item.Address}}</p>
+            <div class="actions">
+              <a *ngIf="item._id != checkedAddress?._id" href="javascript:void(0)" title="Check" class="btn-checks"
+                (click)="makePrimary(item)"></a>
+              <span *ngIf="item._id == checkedAddress?._id" class="btn-checks active"><i
+                  class="icon icon-check-blue"></i></span>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+      <ng-template #noAddressList>No address found</ng-template>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn cancel" (click)="cancelClick()">Cancel</button>
+  <button type="button" class="btn next" (click)="submitClick()">Select</button>
+</div>

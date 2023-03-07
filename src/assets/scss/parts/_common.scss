@@ -1,0 +1,76 @@
+
+/* 1. general 
+=========================*/
+
+body { background: #E5E5E5; 
+    font-family: 'Poppins', sans-serif;
+    font-size: $base-font;
+}
+/*body { background: #E5E5E5 url(../../preview/mobile/Grocery.jpg) no-repeat 50% 0; }*/
+a { text-decoration: none; transition: all .3s;}
+img { vertical-align: middle;}
+
+/* 2. Buttons
+========================*/
+.btn-primary { background: #EE9623; border: none;
+    &:hover {
+        background: #d4841a;
+    }
+}
+.btn:focus, .btn:hover { box-shadow: none;}
+
+/* 3.Forms inputs
+========================*/
+
+/* 4.Typography
+=========================*/
+.primary-title  { font-size: $base-font-3; font-weight: 700; color: rgba(0, 0, 0, 1);  margin: 0 0 8px 0;}
+.primary-title-sub { color: #828282; font-weight: 400; font-size: $base-font-2; margin-bottom: 28px;} 
+
+/* 5. common use class
+========================*/
+
+.icon { display: inline-block; vertical-align: top;}
+.sec-gap  { 
+    background: #fff; padding: 31px;
+    .primary-title, .primary-title-sub {
+        padding-left: 40px;
+    }
+    .head { 
+        margin: 0 14px 15px; padding-bottom: 5px; position: relative; border-bottom:1px solid #E0E0E0;
+        .primary-title, .primary-title-sub { padding: 0 0 8px 0; margin: 0;} 
+        .primary-title { padding: 0 0 11px 0;} 
+        .see_all { position: absolute; top: 20px; right: 10px; font-size: $base-font-4; color: #EE9623;}
+    }
+    &.gray-bg {
+        .head { border: none;}
+    }
+}
+
+.container { max-width: 1374px; margin: 0 auto;}
+.main-wrap { padding: 0;}
+
+/* 6. text and bg colors
+==============================*/
+
+.gray-bg  { background: #F4F4F4;}
+
+.dropdown-toggle:after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    border: none; width: 10px;  height: 10px;  margin-top: 7px;  vertical-align: top;  margin-left: 8px;
+}
+
+
+
+/* Button
+===================*/
+.btn-secondary { background: #F9004B; border-color:#F9004B; padding: 11px 23px;}
+.btn-secondary:hover { background: #b10035; border-color:#b10035; }
+/* header sticky */
+
+
+
+/*.site-wrap {  opacity: .5; max-width: 1374px; margin: 0 auto; margin-top: 0;}*/
+/*.site-wrap {  opacity: .5; max-width: 375px; margin: 0 auto; margin-top: 36px;}*/
+.prod-box  .country_n { display: none;;}
+.container {max-width: $container-width;}

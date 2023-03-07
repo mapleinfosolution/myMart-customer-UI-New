@@ -1,0 +1,22 @@
+<!-- add address modal -->
+
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Add New Address</h4>
+  <button type="button" class="close" aria-label="Close" (click)="cancelClick({})">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<app-add-new-address 
+  [ngClass]="{'display-none': addressSection}"
+  (mapViewEnable)="mapViewEnable($event)"
+  [addressForm]="addressForm"
+  (saveEvent)="saveClick($event)"
+  (cancelEvent)="cancelClick($event)"
+  [submitted]="submitted"
+></app-add-new-address>
+<app-address-selection 
+  [ngClass]="{'display-none': !addressSection}"
+  (closeEvent)="closeAddressPopup($event)"
+  [presentAddress]="setDefaultAddress()"
+></app-address-selection>

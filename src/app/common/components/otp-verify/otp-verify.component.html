@@ -1,0 +1,38 @@
+<div class="auth-form-wrap-outer small m-center mt-65 mb-65">
+  <div class="auth-form-wrap small m-center  mb-32 bg-white">
+    <h2 class="primary-title d-flex flex-wrap justify-content-between">Verification OTP</h2>
+    <div class="form-container">
+      <form [formGroup]="verifyForm">
+        <div class="form-rows">
+          <div class="form-field">
+            <p class="body-text bold black mb-10">Enter the verification code</p>
+            <label for="" class="form-label size-m" [innerHTML]="message"></label>
+            <div class="otp-fields mt-60 mb-60">
+              <div class="otp-inp-w">
+                <input #formRow type="tel" *ngFor="let input of formInput;let i= index" formControlName="{{input}}"
+                  class="form-control" maxlength="1" placeholder="0" (keyup)="keyUpEvent($event, i)"
+                  (keypress)="omit_special_char($event)">
+              </div>
+              <div class="form-group actions">
+                <button class="btn btn-primary" (click)="onSubmit()"
+                  [disabled]="!continueButtonEnable">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-rows">
+          <div class="form-field text-center">
+            <p class="text-light-gray mb-0 size-n">
+              The verify code will expire in <span class="otp_timer">{{showTimer(timeInSecond)}}</span>
+            </p>
+            <p class="mb-0 redend-otp-w">
+              <a href="javascript:void(0)" class="link bold size-m" [ngClass]="{'disable': !resendButtonActive}"
+                (click)="resendClick()">Resend Code</a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br /><br /><br />
+</div>

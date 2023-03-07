@@ -1,0 +1,39 @@
+<div class="auth-form-wrap small m-center mt-65 mb-32 bg-white">
+  <h2 class="primary-title d-flex flex-wrap justify-content-between register-title">Register
+    <span class="sub">Have an Account? 
+      <a href="javascript:void(0)" class="link" [routerLink]="['/auth/login']">Login</a>
+    </span>
+  </h2>
+  <div class="form-container">
+    <form autocomplete="off" [formGroup]="formData">
+      <div class="form-rows">
+        <div class="form-field">
+          <label for="" class="form-label">Email or Phone Number</label>
+          <app-email-mobile-input
+            placeholder="Email or Phone Number" 
+            formControlName="emailMobile"
+            [fieldValue] = "formData.value.emailMobile"
+            (fieldClicked)="fieldClicked($event)"
+          ></app-email-mobile-input>
+          <div *ngIf="submitted && f.emailMobile.errors" class="invalid-feedback">
+            <div *ngIf="f.emailMobile.errors.required">Email or Phone Number is required</div>
+            <div *ngIf="f.emailMobile.errors.emailMobileInvalid">Enter valid Email or Phone Number</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-rows">
+        <div class="form-field text-right mb-20">
+          <a href="javascript:void(0)" class="link bold" [routerLink]="['/auth/forgot-password']">Forgot Password?</a>
+        </div>
+      </div>
+      <div class="form-rows">
+        <div class="form-field">
+          <button type="submit" class="btn btn-primary btn-block" (click)="continueClick()">Continue</button>
+        </div>
+      </div>
+    </form>
+    <app-signin-other-section></app-signin-other-section>
+  </div>
+
+</div>

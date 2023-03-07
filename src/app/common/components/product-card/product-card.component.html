@@ -1,0 +1,69 @@
+<div class="graphic">
+  <!-- <div class="prod_thumbs_caro cursor-pointer" *ngIf="product.productImage.length > 0" (click)="open()"><div>-->
+  <div class="prod_thumbs_caro cursor-pointer" *ngIf="product.productImage.length > 0" [routerLink]="['/product/product-details', product._id, selectedVariant._id]">
+    <ngx-slick-carousel class="carousel">
+      <div ngxSlickItem class="slide pt_item" *ngFor="let image of product.productImage"
+        [ngStyle]="{'background-image': 'url('+ getImageUrl(image, 'originalURL')+')', 'background-size':'contain', 'background-repeat':'no-repeat', 'background-position':'center'}">
+        <img src="assets/images/caro_thumb_trans.png" alt="" width="100%">
+      </div>
+    </ngx-slick-carousel>
+  </div>
+  <div class="prod_thumbs_caro" *ngIf="product.productImage.length == 0" [routerLink]="['/product/product-details', product._id, selectedVariant._id]">
+    <div class="pt_item"
+      [ngStyle]="{'background-image': 'url(assets/images/caro_thumb_no_image.png)', 'background-size':'cover', 'background-position':'center', 'background-repeat':'no-repeat'}">
+      <img src="assets/images/caro_thumb_trans.png" alt="" width="100%">
+    </div>
+  </div>
+  <span class="offer" *ngIf="selectedVariant?.specialPriceProvided">
+    Offer {{selectedVariant?.specialPriceProvided ? ((((selectedVariant.sellerPrice - selectedVariant.specialPrice)/selectedVariant.sellerPrice)*100) |number : '1.2-2') : '0'}}%</span>
+    <span class="fav" [ngClass]="{'active': product.addedToWishlist}" (click)="addRemoveWishList(product, product._id)">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.2121 0.807302C10.6566 0.807302 11.1005 0.870007 11.5225 1.01162C14.123 1.85708 15.06 4.71048 14.2773 7.20457C13.8334 8.4791 13.1077 9.6423 12.1573 10.5927C10.7968 11.9102 9.30391 13.0798 7.69684 14.0873L7.5207 14.1937L7.33752 14.0802C5.72482 13.0798 4.22343 11.9102 2.85027 10.5857C1.90618 9.63526 1.17979 8.4791 0.728886 7.20457C-0.0672504 4.71048 0.869795 1.85707 3.49845 0.996825C3.70277 0.926371 3.91343 0.877052 4.12479 0.849575H4.20934C4.40732 0.820689 4.60389 0.807302 4.80116 0.807302H4.87866C5.32252 0.820689 5.75229 0.898189 6.16868 1.0398H6.21025C6.23843 1.05319 6.25957 1.06798 6.27366 1.08137C6.42936 1.13139 6.57661 1.18776 6.71752 1.26526L6.98525 1.38503C7.04994 1.41953 7.12256 1.47225 7.18531 1.51782C7.22507 1.54668 7.26088 1.57268 7.2882 1.58935C7.2997 1.59613 7.31139 1.60295 7.32317 1.60983C7.38358 1.64509 7.44651 1.68183 7.49957 1.72251C8.28232 1.12435 9.23275 0.800257 10.2121 0.807302ZM12.0862 5.88003C12.375 5.87228 12.6216 5.64048 12.6428 5.34387V5.26003C12.6639 4.27296 12.0657 3.37889 11.1562 3.03367C10.8673 2.93433 10.5503 3.09003 10.4446 3.38594C10.3459 3.68185 10.5009 4.00594 10.7968 4.11092C11.2485 4.28001 11.5507 4.72458 11.5507 5.21705V5.23889C11.5373 5.40023 11.5859 5.55594 11.6846 5.67571C11.7832 5.79548 11.9312 5.86523 12.0862 5.88003Z" fill="#5A5A5A"/>
+        </svg> 
+        
+    </span>
+    <!-- <span class="fav" (click)="addRemoveWishList(product._id, {type: 'remove'})"></span> -->
+</div>
+<div class="prod-info">
+  <h3 class="prod-title cursor-pointer" [routerLink]="['/product/product-details', product._id, selectedVariant._id]">{{product.productname}} {{selectedVariant.packSize + '' + selectedVariant.packSizeMeasureUnit}}</h3>
+  <div class="cat-group">{{product.displayCategory}}</div>
+  <div class="m-ext-opt">
+    <span class="extra_opt">
+      <ng-container *ngFor="let variant of product.prodVariant;let i=index">
+        <a href="javascript:void(0)" [ngClass]="{'selected': (i%2==0)}">
+          {{variant.packSize + '' + variant.packSizeMeasureUnit}}
+        </a>
+      </ng-container>
+    </span>
+  </div>
+  <div class="rate_sec">
+    <span><span class="rate" *ngIf="product.ratings > 0">{{product.ratings}}</span>
+    <span *ngIf="product.soldCount > 0 && product.ratings > 0" class="devider"></span>
+    <span *ngIf="product.soldCount > 0">{{product.soldCount}} Sold</span></span>
+    <span class="extra_opt">
+      <ng-container *ngFor="let variant of product.prodVariant;let i=index">
+        <a class="cursor-pointer" (click)="changeVariant(variant)" [ngClass]="{'selected': variant._id === selectedVariant._id}">
+          {{variant.packSize + '' + variant.packSizeMeasureUnit}}
+        </a>
+      </ng-container>
+    </span>
+  </div>
+  <div class="manufactuter">by <span>{{product.storeData[0].storeName}}</span></div>
+  <div class="actions">
+    <div class="price">
+      <ins>QAR
+        {{(selectedVariant?.specialPriceProvided ? selectedVariant?.specialPrice : selectedVariant?.sellerPrice) | number : '1.2-2'}}</ins>
+      <del *ngIf="selectedVariant?.specialPriceProvided">QAR {{selectedVariant?.sellerPrice | number : '1.2-2'}}</del>
+
+      <span class="country_n">{{product.storeData[0].country}}</span>
+    </div>
+    <a *ngIf="selectedVariant?.cartCount === 0" class="btn btn-gray" (click)="addToCart()"> Add to Cart </a>
+    <span *ngIf="selectedVariant?.cartCount > 0">
+      <span class="minus-count" (click)="cartCount('decrease')">- </span>
+      <span class="count-value">{{selectedVariant?.cartCount}}</span>
+      <span class="plus-count" (click)="cartCount('increase')">+ </span>
+    </span>
+  </div>
+</div>
+
+  

@@ -1,0 +1,11 @@
+<!-- Cat step -->
+<div class="step-box light-gray m-hide">
+    <div class="item" *ngFor="let step of cartSteps" [ngClass]="{'active': step.number <= orderStep }">
+        <div class="number" (click)="stepRedirect(step)">{{step.number}}</div>
+        <h2 class="title">
+            <span class="light">{{step.stepName}}</span>
+            <a (click)="stepRedirect(step)" class="stretched-link">{{step.name}}</a> 
+        </h2>
+    </div>
+</div>
+<!-- Cat step Ends --> 

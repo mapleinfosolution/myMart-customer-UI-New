@@ -1,0 +1,26 @@
+.plus-count {
+  background: #ee9623;
+  color: #fff;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+
+.minus-count {
+  background: #f4f4f4;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+
+.count-value {
+  padding: 0px 12px;
+}
+.keen-product-box-lists .prod-box .graphic .fav { background: none;}
+.keen-product-box-lists .prod-box .graphic .fav.active svg { fill: #FF517B;}

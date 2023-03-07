@@ -1,0 +1,124 @@
+/* variables */
+$accordion_ul: 10px 16px;
+$accordion_ul_radius: 10px;
+$accordion_list_pad: 10px 0;
+$accordion_list_color: #212229;
+$accordion_bg_color: #fff;
+$accordion_item_border: 1px solid #e4e4e4;
+
+.dropdown-menu li {
+  position: relative;
+}
+.dropdown-menu .dropdown-submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -7px;
+}
+.dropdown-menu .dropdown-submenu-left {
+  right: 100%;
+  left: auto;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+  display: block;
+}
+
+
+/* custom accordion class 
+=======================================*/
+
+.ms-cat-accordion {
+  list-style: none;
+  
+  margin: 0; padding: 0;
+  
+  overflow: hidden;
+  
+  .ms-cat-accordion__item:last-child {
+    border-bottom: none;
+  }
+}
+.ms-cat-accordion__sub {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: auto;
+}
+.ms-cat-accordion__input {
+  position: absolute;
+  opacity: 0;
+}
+.ms-cat-accordion__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: $accordion_list_pad;
+  background: $accordion_bg_color;
+  color: $accordion_list_color;
+  margin-bottom: 0;
+  // font-family: NunitoBold;
+  font-size: 12px; line-height: 18px;
+  &::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg width='7' height='12' viewBox='0 0 7 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.33341L5.66667 6.00008L1 10.6667' stroke='%23212229' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    width: 7px;
+    height: 12px;
+    position: absolute;
+    top: 50%;
+    right: 3px;
+    transform: translate(0, -50%) rotate(90deg);
+  }
+}
+.ms-cat-accordion__item {
+  border-bottom: $accordion_item_border;
+}
+.ms-cat-accordion__sub {
+  .ms-cat-accordion__label {
+    color: #8a8a8a;
+    font-family: NunitoRegular;
+  }
+}
+.ms-cat-accordion__sub {
+  //display: none; // by default hide all sub menus
+  height: 0;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: all 0.3s;
+}
+
+.ms-cat-accordion__input:checked ~ .ms-cat-accordion__sub {
+  // show children when item is checked
+  display: block;
+  transform: scaleY(1);
+  height: auto;
+  .ms-cat-accordion__input .ms-cat-accordion__label:before {
+    transform: translate(0, -50%) rotate(0deg);
+    opacity: 0.5;
+  }
+  .ms-cat-accordion__input:checked ~ .ms-cat-accordion__label:before {
+    opacity: 1;
+    transform: translate(0, -50%) rotate(0deg);
+  }
+}
+
+.ms-cat-accordion__input:checked ~ .ms-cat-accordion__label:before {
+  // show children when item is checked
+  transform: translate(0, -50%) rotate(-90deg);
+}
+
+.ms-cat-accordion__input:checked ~ .ms-cat-accordion__label {
+  color: #0267c1;
+}
+
+.ms-cat-accordion--animated .ms-cat-accordion__label::before {
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.category-count {
+  background: #2125296e;
+    color: #fff;
+    padding: 0px 4px;
+    border-radius: 5px;
+}

@@ -1,0 +1,94 @@
+<div class="cart-main-wrap light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 sm-p-0 cart-tbl-wrap-left">
+                <div class="payment-box-wrap">
+                    <div class="order-delivery-options">
+                        <div class="form-check def-radio body-text active">
+                              <!-- <input class="form-check-input" type="radio" name="expradio" id="expradio1" value="expradio1"> -->
+                              <label class="form-check-label d-block" for="expradio1">
+                                  <i class="icon icon-cod"></i>
+                                  <span class="d-block bold black">Cash On Delivery</span>
+                                  <span class="d-block bold light-gray">Activate and Pay</span>
+                              </label>
+                        </div>
+                        <!-- <div class="form-check def-radio body-text">
+                              <input class="form-check-input" type="radio" name="expradio" id="expradio1" value="expradio1">
+                              <label class="form-check-label d-block" for="expradio1">
+                                  <i class="icon icon-cards"><img src="assets/images/payment_card_img.png" alt=""></i>
+                                  <span class="d-block bold black">Credit Card</span>
+                              </label>
+                        </div> -->
+                    </div>    <div class="order-payment-methods">
+                        <div class="cod-form">
+                        <h2 class="label">Cash On Delivery OR Online Payment</h2>
+                        <p class="body-text">
+                            To activate Cash On Delivery, kindly provide your mobile number,  a verification code will be sent to you via SMS
+                        </p>
+                        <div class="form-container">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="" class="light pl-12">Mobile Number</label>
+                                    <div class="float-inp">
+                                        <span class="phone-country-code">+974</span>
+                                        <input type="text" [(ngModel)]="phoneNumber" name="" id="" class="form-control bottom-line-inp pl-65">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="" class="light pl-12">SMS Code <span>{{ timer }}</span></label>
+                                    <div class="float-inp">
+                                        <input type="text" [readonly]="isDisabledOtp" name="" id="" [(ngModel)]="otp" class="form-control bottom-line-inp otp-fields" placeholder="Your OTP code here">
+                                        <button class="get-varification no-border"  [disabled]="disable()" (click)="getOtp()">{{isDisabledOtp ? 'Resend Verification Code' : 'Get Verification Code'}}</button>
+                                    </div>
+                                    <div class="success-msg">{{successMsg}}</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field ">
+                                    <div class="form-check body-text">
+                                        <input class="form-check-input" [(ngModel)]="isChecked" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label body-text" for="flexCheckDefault">
+                                            By clicking “Verifiy Mobile Number” I agree to <a href="#">Terms</a> and <a href="#">Privacy Policy</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field ">
+                                    <!-- <input type="button" value="Verify Mobile Number" class="btn btn-pink btn-block"> -->
+                                    <form>
+                                      <fieldset>
+                                        <h2 class="label">Please select your payment method:</h2>
+                                          <input type="radio" id="contactChoice1" name="contact" value="COD" (change)="onChange($event)" />
+                                          <label for="contactChoice1">COD</label>
+                                    
+                                          <input type="radio" id="contactChoice2" name="contact" value="online" (change)="onChange($event)" />
+                                          <label for="contactChoice2">ONLINE</label>
+                                      </fieldset>
+                                    </form>
+                                    <button class="btn btn-pink btn-block" (click)="action()" [disabled]="verifyDisable()">{{ 'Place Order' }}</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div></div>            </div>
+            <div class="col-md-4 voucher-code-w">
+                
+                <div class="delivery-info-box key-val-box bg-white">
+                    <!-- <button (click)="placeOrder()" [disabled]="isDisabled" class="btn btn-block btn-pink big mb-20">Place Order</button> -->
+                    <app-delivery-information [deliveryInformation]="deliveryLocation"></app-delivery-information>
+                    
+                </div>                <!-- order summery -->
+                        
+                <app-order-summery 
+                [totalAmount]="totalAmount"
+                [totalSelectedProduct]="totalSelectedProduct"
+                [step]="3" >
+              </app-order-summery>
+                <!-- order summery Ends -->            
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="user-recent-order text-block">
+  <h3 class="primary-title">Recent Orders</h3>
+  <div class="custom-tbl">
+    <div class="thead">
+      <div class="tr">
+        <div class="th">Order#</div>
+        <div class="th">Placed On</div>
+        <div class="th">Items</div>
+        <div class="th">Total</div>
+        <div class="th"></div>
+      </div>
+    </div>
+    <div class="tbody">
+      <div class="tr" *ngFor="let order of orderList">
+        <div class="td">{{order.orderId}}</div>
+        <div class="td">{{order.order?.orderDate | date:'dd/MM/yyyy'}}</div>
+        <div class="td">{{order.totalItems}}</div>
+        <div class="td">QAR {{order.order?.totalAmount | number: "1.2-2"}}</div>
+        <div class="td action">
+          <a href="javascript:void(0)" class="link" routerLink="/my-account/order-details/{{order._id}}">MANAGE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

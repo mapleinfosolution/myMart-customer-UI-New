@@ -1,0 +1,124 @@
+.text-block {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 32px 24px;
+  margin-bottom: 20px;
+}
+.profile-info {
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(229, 229, 229, 0.5);
+  border-radius: 10px;
+  width: 275px;
+  padding: 15px;
+  margin-right: 15px;
+}
+.user-personal-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  .primary-title {
+    margin-bottom: 30px;
+  }
+  .address-info {
+    flex: 1 1 auto;
+    flex: 1 1 calc(100% - 315px);
+    padding-top: 15px;
+    .primary-title {
+      padding-left: 25px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 21px;
+      color: #5a5a5a;
+    }
+  }
+}
+.address-col-w {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  .address-col {
+    flex: 1 1 50%;
+    max-width: 50%;
+    padding-left: 25px;
+    padding-right: 25px;
+    .title {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #000;
+    }
+  }
+  .address-col:nth-child(even) {
+    border-left: 2px solid #f4f4f4;
+  }
+}
+.user-personal-info .primary-title {
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+a {
+  color: #ee9623;
+}
+.prifile-graphic-w {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 30px;
+   img { border-radius: 999px; margin-right: 10px;}
+  .graphic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #e2e2ea;
+    margin-right: 10px;
+  }
+  .title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: #5a5a5a;
+  }
+}
+.key-val-lists {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    border-bottom: 1px solid rgba(9, 28, 63, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    &:last-child {
+      border-bottom: none;
+    }
+    .key {
+      font-size: 14px;
+      line-height: 18px;
+      color: #5a5a5a;
+      margin-right: 10px;
+    }
+    .val {
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 500;
+      color: #000000;
+    }
+  }
+}
+.icon-shield {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.22217 0C5.70467 0 4.83992 0.19875 4.02617 0.42C3.19367 0.645 2.35442 0.91125 1.86092 1.0725C1.65459 1.14064 1.47167 1.2656 1.33316 1.43303C1.19465 1.60045 1.10619 1.80355 1.07792 2.019C0.630922 5.37675 1.66817 7.86525 2.92667 9.5115C3.46036 10.2157 4.09669 10.8359 4.81442 11.3512C5.10392 11.556 5.37242 11.7128 5.60042 11.82C5.81042 11.919 6.03617 12 6.22217 12C6.40817 12 6.63317 11.919 6.84392 11.82C7.11879 11.6864 7.38174 11.5296 7.62992 11.3512C8.34767 10.8359 8.984 10.2157 9.51767 9.5115C10.7762 7.86525 11.8134 5.37675 11.3664 2.019C11.3382 1.80345 11.2498 1.60023 11.1113 1.43267C10.9728 1.26512 10.7898 1.14002 10.5834 1.07175C9.86703 0.83686 9.14507 0.619297 8.41817 0.41925C7.60442 0.1995 6.73967 0 6.22217 0ZM7.83167 3.8595C7.90209 3.78908 7.99759 3.74953 8.09717 3.74953C8.19675 3.74953 8.29226 3.78908 8.36267 3.8595C8.43309 3.92991 8.47265 4.02542 8.47265 4.125C8.47265 4.22458 8.43309 4.32009 8.36267 4.3905L6.11267 6.6405C6.07784 6.67542 6.03646 6.70313 5.9909 6.72203C5.94534 6.74094 5.8965 6.75067 5.84717 6.75067C5.79785 6.75067 5.74901 6.74094 5.70345 6.72203C5.65789 6.70313 5.61651 6.67542 5.58167 6.6405L4.45667 5.5155C4.42181 5.48063 4.39415 5.43924 4.37528 5.39369C4.35641 5.34813 4.3467 5.29931 4.3467 5.25C4.3467 5.20069 4.35641 5.15187 4.37528 5.10631C4.39415 5.06076 4.42181 5.01937 4.45667 4.9845C4.49154 4.94963 4.53293 4.92198 4.57848 4.90311C4.62404 4.88424 4.67286 4.87453 4.72217 4.87453C4.77148 4.87453 4.82031 4.88424 4.86586 4.90311C4.91141 4.92198 4.95281 4.94963 4.98767 4.9845L5.84717 5.84475L7.83167 3.8595Z' fill='%232D81BA'/%3E%3C/svg%3E%0A");
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+}
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}

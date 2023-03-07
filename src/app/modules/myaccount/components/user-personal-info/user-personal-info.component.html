@@ -1,0 +1,39 @@
+<div class="user-personal-info text-block">
+  <div class="profile-info">
+    <h3 class="primary-title">My Profile <a href="javascript:void(0)"
+        [routerLink]="['/my-account/profile-edit']">Edit</a></h3>
+    <div class="prifile-graphic-w">
+      <div class="graphic" *ngIf="!userDetails.profileImage">
+        <!-- <img src="" alt=""> -->
+        {{showName()}}
+      </div>
+      <img *ngIf="userDetails.profileImage" src="{{imageUrl(userDetails.profileImage)}}" alt="Profile Image" width="50"
+        height="50" />
+      <h4 class="title">{{userDetails.firstname}} {{userDetails.lastname}} <span class="icon icon-shield"></span></h4>
+    </div>
+    <ul class="key-val-lists">
+      <li *ngIf="userDetails?.email">
+        <span class="key">Email</span>
+        <span class="val">{{userDetails?.email}}</span>
+      </li>
+      <li *ngIf="userDetails?.phone">
+        <span class="key">Mobile Number</span>
+        <span class="val">+65 {{userDetails?.phone}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="address-info">
+    <h3 class="primary-title">Address Book
+      <a href="javascript:void(0)" routerLink="/my-account/address">Edit</a>
+    </h3>
+    <div class="address-col-w" *ngIf="defaultAddressList && defaultAddressList.length; else noAddressList">
+      <div class="address-col">
+        <p>Default Shipping Address</p>
+        <h3 class="title">{{defaultAddressList[0].Name}}</h3>
+        <p>{{defaultAddressList[0].Address}}, <br />{{defaultAddressList[0].State}}, {{defaultAddressList[0].Country}} 
+        <br /><span *ngIf=""defaultAddressList[0]?.MobileNo>+65 {{defaultAddressList[0].MobileNo}}</span></p>
+      </div>
+    </div>
+    <ng-template #noAddressList>No address found</ng-template>
+  </div>
+</div>

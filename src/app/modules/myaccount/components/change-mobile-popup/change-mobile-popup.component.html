@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Verify Phone Number</h4>
+  <button type="button" class="close" aria-label="Close" (click)="cancelClick()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="verifi-email-form" [formGroup]="mobileChangeForm">
+    <div class="head"><i class="icon"><svg width="41" height="40" viewBox="0 0 41 40" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M0.5 20.03C0.5 9.49424 8.92 0 20.54 0C31.9 0 40.5 9.31397 40.5 19.97C40.5 32.3285 30.42 40 20.5 40C17.22 40 13.58 39.1187 10.66 37.3961C9.64 36.7752 8.78 36.3145 7.68 36.675L3.64 37.8768C2.62 38.1973 1.7 37.3961 2 36.3145L3.34 31.8277C3.56 31.2068 3.52 30.5458 3.2 30.025C1.48 26.8603 0.5 23.3951 0.5 20.03ZM11.2397 22.614C9.83969 22.614 8.67969 21.4523 8.67969 20.0502C8.67969 18.628 9.81969 17.4863 11.2397 17.4863C12.6597 17.4863 13.7997 18.628 13.7997 20.0502C13.7997 21.4523 12.6597 22.594 11.2397 22.614ZM17.9004 20.0304C17.9004 21.4525 19.0404 22.5942 20.4604 22.6143C21.8804 22.6143 23.0204 21.4525 23.0204 20.0504C23.0204 18.6283 21.8804 17.4866 20.4604 17.4866C19.0604 17.4666 17.9004 18.6283 17.9004 20.0304ZM27.1201 20.0502C27.1201 21.4523 28.2601 22.614 29.6801 22.614C31.1001 22.614 32.2401 21.4523 32.2401 20.0502C32.2401 18.628 31.1001 17.4863 29.6801 17.4863C28.2601 17.4863 27.1201 18.628 27.1201 20.0502Z"
+            fill="#EE9623" />
+        </svg>
+      </i> We Will send One Time Code to your Mobile Number</div>
+    <div class="form-container">
+      <div class="form-rows">
+        <div class="form-field">
+          <label for="" class="form-label">Mobile Number</label>
+          <input class="form-control bottom-line-inp phone-field" type="tel" placeholder="Mobile no"
+            name="phone" formControlName="phone" />
+        </div>
+      </div>
+
+      <div class="form-rows">
+        <div class="form-field">
+          <label for="" class="form-label">SMS Code</label>
+          <div class="inp-float">
+            <input class="form-control bottom-line-inp " type="number" placeholder="Your OTP code here"
+              name="otp" formControlName="otp" />
+            <button class="btn btn-light-gary count" (click)="sendOtp()"
+              [disabled]="startTimer">{{ (startTimer) ? timerValue : 'Send'}}</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-action">
+        <button class="btn btn-pink" (click)="changeMobile()">Verify Code</button>
+      </div>
+    </div>
+  </div>
+</div>

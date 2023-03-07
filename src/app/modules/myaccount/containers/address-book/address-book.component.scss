@@ -1,0 +1,65 @@
+.delivery-address-lists {
+    display: flex; flex-wrap: wrap;
+}
+
+.addres-list-item {
+    background: #FFFFFF; position: relative;
+box-shadow: 0px 0px 4px #E5E5E5;
+border-radius: 10px;
+padding: 18px;
+flex: 1 1 calc(50% - 16px); max-width: calc(50% - 16px); margin-bottom: 15px; 
+
+    &:before { content: ""; width: 4px; height: 40px; background: #C0C0C0;
+        border-radius: 0px 10px 10px 0px; position: absolute; top: 15px; left: 0;}
+    &.active:before {
+        background: linear-gradient(225deg, #04BEFE 0%, #4481EB 100%);
+        border-radius: 0px 10px 10px 0px;
+    }
+    &.active:after {
+        content: "Primary";
+        text-transform: uppercase;
+        background: linear-gradient(225deg, #04BEFE 0%, #4481EB 100%);
+        border-radius: 0px;
+        color: #fff;
+padding: 0 8px;
+position: absolute;
+top: 0;
+left: 15px;
+font-size: .8em;
+border-radius: 15px;
+    }
+    &:nth-child(even) { margin-left: 8px;}
+    &:nth-child(odd) { margin-right: 8px;}
+
+    .type {font-size: 14px;  line-height: 18px; color: #5A5A5A; margin-bottom: 8px;}
+    .name {font-weight: 600;  font-size: 16px;  line-height: 24px; color: #000000; margin-bottom: 2px;}
+    p {font-size: 12px; line-height: 18px; color: #9A9A9A; margin-bottom: 3px;}
+    .actions { position: absolute; top: 5px; right: 0px;  width: 35px;
+        .btn {border-radius: 5px; width: 30px;  height: 30px; margin-bottom: 5px; display: flex; padding: 0; justify-content: center; align-items: center;}
+        .btn-blue-light { background: rgba(45, 129, 186, 0.2);}
+        .btn-yellow-light { background: rgba(238, 150, 35, 0.15);}
+        .btn-pink-light { background: rgba(249, 0, 75, 0.2);}
+    }
+}
+
+
+.account-delivery-sec { width: 100%;}
+
+.primary-title { border-bottom: 1px solid #EEEEEE; padding-bottom: 15px; font-size: 18px; margin-bottom: 20px;
+    line-height: 26px; justify-content: space-between; display: flex; flex-wrap: wrap; align-items: center;}
+.btn-pink-light { background: rgba(249, 0, 75, 0.2);
+    border-radius: 10px; padding: 10px 10px; color: #F9004B; font-weight: 600;    font-size: 14px;    line-height: 18px;}
+
+@media only screen and (max-width: 992px) {
+    .delivery-address-lists .addres-list-item { flex: 1 1 100%; margin-right: 0; max-width: 100%;}
+    .addres-list-item .type { font-size: 12px; line-height: 15px; margin-bottom: 0;}
+    .addres-list-item .name { font-size: 14px;  line-height: 18px; margin-bottom: 3px;}
+    .addres-list-item p { font-size: 10px;  line-height: 15px;}
+    .addres-list-item .actions .btn { width: 24px; height: 24px;
+        .icon { background-size: 75%; background-repeat: no-repeat; background-position: center;}
+    }
+    .mobile-create-address-w { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 9991; background: #fff; padding: 13px;
+        .btn { width: 100%;}
+    }
+    .account-delivery-sec { min-height: 80vh;}
+}

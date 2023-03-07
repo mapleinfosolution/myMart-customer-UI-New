@@ -1,0 +1,293 @@
+<div class="site-wrap">
+  <div class="container main-wrap">
+    <div class="grocery-banner-sec container-fluid">
+      <div class="row justify-content-between">
+        <div class="col-md-3 left-cet-sec">
+          <div class="left-category" [ngClass]="{'mega_menu_on': isMegaCat}">
+            <h3 class="title">Categories</h3>
+            <ul class="category_lists">
+              
+              <li class="has_sub" *ngFor="let category of categoryList" (mouseenter)="categoryMouseEnterli(category)"
+                [ngClass]="{'on': category.active, 'view_all_cat':category.view_more}">
+                <a href="javascript:void(0)">{{category.categoryName}}</a>
+                <ul *ngIf="category.children.length">
+                  <li class="mega_menu_switch" *ngFor="let subCat of category.children; index as i"
+                    (click)="goToProductList(subCat.categoryName)" (mouseenter)="categoryMouseEnter(subCat)"
+                    (mouseleave)="categoryMouseLeave(subCat)"
+                    [ngClass]="{'on': subCat.active, 'has_arrow': subCat.children.length, 'view-item':i<3}">
+                    <a>{{subCat.categoryName}}</a>
+                  </li>
+                  <li class="view_all_item" (click)="categoryViewMore(category)">
+                    <a class="view_all" href="javascript:void(0)"> {{category.view_more ? 'View Less' : 'View All'}}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div class="mega_menu_container">
+              <div class="mega_menu_wrap">
+                <div class="mega-menu-lists-w">
+                  <!--                  <div class="mm-list-box">-->
+                  <!--                    <h3 class="title">Computer &amp; Accessories</h3>-->
+                  <!--                  </div>-->
+                  <div class="megamenu_masonry">
+                  <div class="mm-list-box" *ngFor="let category of selectedCategoryOnHover.children">
+                    <h3 class="title cus-pointer" (click)="goToProductList(category.categoryName)">
+                      {{category.categoryName}}</h3>
+                    <ul *ngIf="category.children.length">
+                      <li *ngFor="let subCat of category.children" (click)="goToProductList(subCat.categoryName)">
+                        <a>{{subCat.categoryName}}</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                </div>
+                <div class="mega-popular-prod-list">
+                  <div class="mega-popular-prod-list-b">
+                    <h2 class="title">Popular Products</h2>
+                    <ul>
+                      <li><a href="#">Apple</a></li>
+                      <li><a href="#">Dell</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ========================== Carousel Banner ============================== -->
+        <div class="col-md-9 banner-caro">
+          <ngx-slick-carousel class="carousel banner-carosual">
+            <div *ngFor="let banner of banners" ngxSlickItem class="slide carosual-item"
+              [ngStyle]="{'background-image':'url('+ getImageUrl(banner.bannerImageId[0], 'originalURL') +')', 'background-size':'cover', 'background-position':'center'}">
+              <!--<img [src]="imageBasePath+banner.bannerImageId[0].originalURL" alt="" width="100%">-->
+              <img src="assets/images/grociry_banner_trans.png" alt="banner" width="100%">
+            </div>
+          </ngx-slick-carousel>
+          <!-- ========================== Shipping option ============================== -->
+          <div class="shop-filter" >
+            <span class="sinfo">
+              Please Choose Your Grocery Shopping Preference<a class="info_tip"></a>
+            </span>
+            <div class="btn-groups" id="banner_shop_filter">
+              <a class="btn selected hovered" href="#" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                data-bs-placement="bottom" data-bs-content="Best Offers from All Stores allows you to get the best
+                 offers but you might get it the next day Delivery">
+                Fast Delivery</a>
+              <a class="btn" href="#" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                data-bs-placement="bottom" data-bs-content="Best Offers from All Stores allows you to get the best
+                 offers but you might get it the next day Delivery">
+                Best Offers</a>
+              <a class="btn" href="#" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                data-bs-placement="bottom" data-bs-content="Best Offers from All Stores allows you to get the best
+                 offers but you might get it the next day Delivery">
+                Select a Store </a>
+                <span class="indicator"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="popular-cat sec-gap">
+      <div class="head">
+        <h2 class="primary-title">
+          {{getLang('popularCategories')}}</h2>
+        <p class="primary-title-sub"> Most visited by customer</p><a [routerLink]="['/categories']" class="see_all cursor-pointer">See all</a>
+      </div>
+      <div class="popular-cat-lists-wrap">
+        <ul class="popular-cat-lists">
+          <li *ngFor="let popularCategory of popularCategoryList"><a (click)="redirectToList(popularCategory.categoryName)" href="javascript:void(0)"
+              [title]="popularCategory.categoryName"><img class="graphic"
+                [src]="popularCategory.image ? baseUrl +popularCategory?.image?.originalURL : 'assets/images/caro_thumb_no_image.png'"
+                alt=""><span class="d-inline-block">{{stringSlice(popularCategory.categoryName, 20)}}</span></a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="popular-trending sec-gap">
+      <div class="head">
+        <h2 class="primary-title">
+          New & Trending </h2>
+        <p class="primary-title-sub"> Incoming new product</p><a (click)="seeAll('newAndTrending')" class="see_all cursor-pointer">See all</a>
+      </div>
+      <!-- swiper slider -->
+      <div class="swiper new_trending_sec keen-product-box-lists">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide prod-box" *ngFor="let product of trendingList">
+              <app-product-card [product]="product"></app-product-card>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-scrollbar"></div>
+      </div>
+      <!-- swiper slider Ends -->
+      
+
+
+
+
+
+
+<!-- 
+      <div class="keen-product-box-lists keen-slider" id="trending_slider" [ngClass]="{'gap10': !isTrendingSlider}"
+        #sliderRef>
+        <div class="prod-box keen-slider__slide" *ngFor="let product of trendingList">
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+      </div>
+-->
+
+      <!-- product-box-navigation-->
+      <span class="keen-slider-next" id="trending_slider_next" (click)="slider.next()"
+        [ngClass]="{'d-none': !isTrendingSlider}"></span>
+      <span class="keen-slider-prev" id="trending_slider_prev" (click)="slider.prev()"
+        [ngClass]="{'d-none': !isTrendingSlider}"></span>
+    </section>
+    <section class="product-highlight sec-gap">
+      <div class="head">
+        <h2 class="primary-title">
+          Highlights</h2>
+        <p class="primary-title-sub"> Focus your shopping with these highlights</p>
+        <!-- <a class="see_all" href="javascript:void(0)"> See all</a> -->
+      </div>
+      <!-- heighlight banner -->
+      <ngx-slick-carousel class="carousel highlight-carosual" [config]="highlightSliderConfig">
+        <div ngxSlickItem *ngFor="let slide of highlightSlider" class="slide carosual-item"
+          [ngStyle]="{'background-image':'url('+slide.img+')'}">
+          <h2 class="title">
+            {{slide.title}}<strong> {{slide.sub_title}} </strong><a class="link" href="javascript:void(0)">Shop Now
+              <div class="icon fa fa-angle-right"></div>
+            </a></h2>
+        </div>
+      </ngx-slick-carousel>
+      <!-- heigh light banner Ends -->
+    </section>
+    <section class="popular-brand sec-gap gray-bg">
+      <div class="head">
+        <h2 class="primary-title">
+          Popular Brand</h2>
+          <!-- <a class="see_all" href="javascript:void(0)"> See all</a> -->
+      </div>
+      <ngx-slick-carousel class="carousel brand-carosual" [config]="brandsCarouselConfig">
+        <div ngxSlickItem class="slide carosual-item" *ngFor="let brand_item of brandsCarousel">
+          <a [href]="brand_item.url"> <img *ngIf="brand_item.img" [src]="imageUrl(brand_item.img)" alt=""></a>
+        </div>
+      </ngx-slick-carousel>
+    </section>
+    <section class="sec-gap recomanded_prods_sec gray-bg">
+      <div class="head">
+        <h2 class="primary-title">
+          Recomanded Products</h2>
+        <p class="primary-title-sub">
+          Some text here</p><a class="see_all cursor-pointer"  (click)="seeAll('recomandedProducts')"> See all</a>
+      </div>
+      <!-- swiper slider -->
+      <div class="swiper recomanded_prods_slider keen-product-box-lists">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide prod-box" *ngFor="let product of recomandedList">
+              <app-product-card [product]="product"></app-product-card>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-scrollbar"></div>
+      </div>
+      <!-- swiper slider Ends -->
+
+
+
+
+
+
+<!-- 
+      <div class="splide">
+        <div class="splide__track">
+          <div class="product-lists-caro splide__list">
+            <div *ngFor="let product of productList" class="prod-box splide__slide">
+              <app-product-card [product]="product"></app-product-card>
+            </div>
+          </div>
+        </div>
+      </div>
+-->
+    </section>
+
+
+
+
+    <section class=" sec-gap best_seller_sec gray-bg" *ngIf="viewRecentlyPurchased">
+      <div class="head">
+        <h2 class="primary-title">Recently Purchased</h2>
+        <p class="primary-title-sub">Our Recently Purchased products</p>
+        <a class="see_all cursor-pointer" (click)="seeAll('recentlyPurchased')"> See all</a>
+      </div>
+
+      <!-- swiper slider -->
+      <div class="swiper best_seller_slider keen-product-box-lists">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide prod-box" *ngFor="let product of recentlyPurchasedList">
+              <app-product-card [product]="product"></app-product-card>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-scrollbar"></div>
+      </div>
+      <!-- swiper slider Ends -->
+
+    </section>
+
+
+
+
+
+
+    <!-- end recomended products-->
+    <section class=" sec-gap best_seller_sec gray-bg">
+      <div class="head">
+        <h2 class="primary-title">Best Seller</h2>
+        <p class="primary-title-sub">Our Best seller products</p>
+        <!-- <a class="see_all cursor-pointer" (click)="seeAll('bestSeller')"> See all</a> -->
+      </div>
+
+      <!-- swiper slider -->
+
+
+
+      <div class="best_seller_slider keen-product-box-lists">
+        <div class="swiper-wrappers">
+        <div class="swiper-slides prod-box" *ngFor="let product of bestSellerList; let i = index">
+          <div *ngIf="i < perRowView">
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+        </div>
+      </div>
+        <!-- 
+        
+            
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-scrollbar"></div>
+        -->
+        <div class="text-center see-more" (click)="loadMore()" *ngIf="perRowView < 15"> <span class="btn btn-primary">Load More</span></div>
+      </div>
+      <!-- swiper slider Ends -->
+
+
+<!-- 
+      <div class="splide">
+        <div class="splide__track">
+          <div class="product-lists-caro splide__list">
+            <div class="prod-box splide__slide" *ngFor="let product of productList">
+              <app-product-card [product]="product"></app-product-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    -->
+
+    </section>
+    <!-- end best seller-->
+  </div>
+</div>

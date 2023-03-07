@@ -1,0 +1,26 @@
+<div class="wishlist-row green">
+  <div class="head">
+    <h3 class="title">Groceries</h3>
+  </div>
+  <div class="wish-conts-body">
+    <div class="item" *ngFor="let item of wishListData">
+      <div class="graphic col">
+        <!-- <img src="http://grocery.mymart.qa:7770/uploads//originalImage-1635755677013.png" alt=""> -->
+        <img src="{{imageUrl(item.primaryProductImage)}}" alt="">
+      </div>
+      <div class="col info">
+        <h4 class="title cursor-pointer" [routerLink]="['/product/product-details', item.productId]">{{item.productName}}</h4>
+        <span class="unit">1kg</span>
+      </div>
+      <!-- <div class="col qty">QTY : <strong>2</strong></div> -->
+      <div class="col price">
+        <div class="price-txt">QAR 50.33</div>
+        <span class="price-del">QAR <del>55.00</del></span>
+        <span class="pill pill-green">-2%</span>
+      </div>
+      <!-- <div class="col action">
+        <a href="javascript:void(0)" class="btn btn-secondary"><i class="icon icon-cart"></i> Add To Cart</a>
+      </div> -->
+    </div>
+  </div>
+</div>

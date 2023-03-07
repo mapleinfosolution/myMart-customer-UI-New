@@ -1,0 +1,35 @@
+<div class="auth-form-wrap-outer small m-center mt-65"
+  *ngIf="currentPage=='step2' || currentPage=='step3' || currentPage=='step4'">
+  <p class="mb-40">
+    <a href="javascript:void(0)" class="back-link" (click)="backToRegister()">
+      <i class="icon icon-arrow-right-yellow mr-15 flip"></i> Back to Register
+    </a>
+  </p>
+</div>
+<app-signup-step-one
+  *ngIf="currentPage=='step1'" 
+  (submitEmailMobile)="submitEmailMobile()" 
+  [formData]="registerForm"
+  [submitted]="submitted"
+></app-signup-step-one>
+<app-otp-verify
+  *ngIf="currentPage=='step2'"
+  (submitOtp)="emailMobileOtpSubmit($event)"
+  (resend)="emailOtpResend()" 
+  [message]="otpMessageText"
+></app-otp-verify>
+<app-signup-step-three
+  *ngIf="currentPage=='step3'"
+  (submitRegister)="submitDetails()" 
+  [formData]="registerForm"
+  [submitted]="submitted"
+></app-signup-step-three>
+<app-signup-step-four
+  *ngIf="currentPage=='step4'"
+  (submitRegister)="submitPassword()" 
+  [formData]="registerForm"
+  [submitted]="submitted"
+></app-signup-step-four>
+<app-signup-step-five
+  *ngIf="currentPage=='step5'"
+></app-signup-step-five>

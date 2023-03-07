@@ -1,0 +1,183 @@
+<footer class="site-footer container-fluid"><a class="scroll_top" (click)="$event.preventDefault(); scrollTopSmooth(0)"></a>
+  <div class="footer-top row">
+    <div class="col">
+      <h5 class="title">Information</h5>
+      <ul>
+        <li><a href="javascript:void(0)">About Us</a></li>
+        <li><a href="javascript:void(0)">New & Trending Product</a></li>
+        <li><a href="javascript:void(0)">Best Seller</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h5 class="title">Other Links</h5>
+      <ul>
+        <li><a href="javascript:void(0)">Sell on Mymart Qatar</a></li>
+        <li><a href="javascript:void(0)">Legal Notice</a></li>
+        <li><a href="javascript:void(0)">Terms & Conditions</a></li>
+        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h5 class="title">Your Accounts</h5>
+      <ul>
+        <li><a href="javascript:void(0)">Personal Info</a></li>
+        <li><a href="javascript:void(0)">Orders</a></li>
+        <li><a href="javascript:void(0)">Adresses</a></li>
+        <li><a href="javascript:void(0)">My Wishlist</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h5 class="title">Help Links</h5>
+      <ul>
+        <li><a href="javascript:void(0)">Shipping & Delivery</a></li>
+        <li><a href="javascript:void(0)">Payment Methods</a></li>
+        <li><a href="javascript:void(0)">Return & refunds</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h5 class="title">Contact Us</h5>
+      <ul>
+        <li class="marker_icon">
+          Doha, Qatar
+        </li>
+        <li class="phone_icon"><a href="tel:974 5029 0202">+974 5029 0202</a></li>
+        <li class="email_icon"><a href="mailto:support@mymart.qa">support@mymart.qa</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row footer-chat">
+    <div class="fchat col-auto"><img src="assets/images/footer_chat.png" alt=""></div>
+  </div>
+  <div class="row footer-bot">
+    <div class="col footer-copyright">
+      <p class="logo"><a href="javascript:void(0)"> <img src="assets/images/logo.png" alt=""></a></p>
+      <p>© 2021 <a href="javascript:void(0)">myMart.qa</a>. All rights reserved.</p>
+      <div class="social-links">
+        <a class="facebook" href="javascript:void(0)">
+          <svg class="search-icon icon">
+            <use xlink:href="#facebook-icon"></use>
+          </svg>
+        </a>
+        <a class="twitter" href="javascript:void(0)">
+          <svg class="search-icon icon">
+            <use xlink:href="#twitter-icon"></use>
+          </svg>
+        </a>
+        <a class="instagram" href="javascript:void(0)">
+          <svg class="search-icon icon">
+            <use xlink:href="#instagram-icon"></use>
+          </svg>
+        </a>
+        <a class="whatapps" href="javascript:void(0)">
+          <svg class="search-icon icon">
+            <use xlink:href="#whatsapp-icon"></use>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3 download-now">
+      <form class="input-group" action="">
+        <label class="label" for="">Download Now </label>
+        <input class="form-control" type="text" name="" placeholder="Your mobile number">
+        <button class="btn btn-primary">
+          Download
+        </button>
+      </form>
+      <div class="app_links"><a class="apple_link" href="javascript:void(0)"> <img src="assets/images/apple_btn.png" alt=""></a><a
+          class="android_link" href="javascript:void(0)"> <img src="assets/images/android_btn.png" alt=""></a></div>
+    </div>
+    <div class="col-auto scan">
+      <h5 class="label">
+        Scan QR Code</h5><img src="assets/images/qr_code.png" alt="">
+    </div>
+  </div>
+</footer>
+
+<div class="responsive-footer-wrap">
+  <div class="responsive-footer">
+    <a [class]="class ? 'round-btn active' : 'round-btn'" routerLink="/">
+      <svg class="icon-footer icon-f-home" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="home-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#F9004B"/>
+            <stop offset="100%" stop-color="#ff4a80"/>
+          </linearGradient>
+        </defs>
+        <path
+          d="M5.39538 13.8618V11.715C5.39537 11.171 5.86102 10.7291 6.43779 10.7256H8.55561C9.13496 10.7256 9.60462 11.1686 9.60462 11.715V13.8556C9.60461 14.3275 10.0082 14.7109 10.5085 14.7143H11.9533C12.6282 14.716 13.2759 14.4643 13.7537 14.0148C14.2315 13.5654 14.5 12.9551 14.5 12.3186V6.22045C14.5 5.70633 14.2584 5.21865 13.8402 4.88881L8.93167 1.18634C8.07364 0.538741 6.84817 0.559661 6.01555 1.23612L1.21254 4.88881C0.774651 5.20893 0.512933 5.69805 0.5 6.22045V12.3124C0.5 13.639 1.64018 14.7143 3.04665 14.7143H4.45853C4.69939 14.716 4.93099 14.6269 5.10193 14.4669C5.27286 14.3068 5.369 14.089 5.36899 13.8618H5.39538Z"
+          fill="#F9004B" />
+      </svg>
+      Home
+    </a>
+    <a class="round-btn" routerLinkActive="active" routerLink="/categories" (click)="buttonClick()">
+      <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-footer icon-f-cat">
+        <defs>
+          <linearGradient id="cat-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#F9004B"/>
+            <stop offset="100%" stop-color="#ff4a80"/>
+          </linearGradient>
+        </defs>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.24986 4.43658C1.24986 2.39475 1.27173 1.71436 3.97208 1.71436C6.67244 1.71436 6.69431 2.39475 6.69431 4.43658C6.69431 6.47841 6.70292 7.1588 3.97208 7.1588C1.24125 7.1588 1.24986 6.47841 1.24986 4.43658Z" stroke="#5a5a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.80542 4.43658C9.80542 2.39475 9.82728 1.71436 12.5276 1.71436C15.228 1.71436 15.2499 2.39475 15.2499 4.43658C15.2499 6.47841 15.2585 7.1588 12.5276 7.1588C9.79681 7.1588 9.80542 6.47841 9.80542 4.43658Z" stroke="#5a5a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.24986 12.9922C1.24986 10.9504 1.27173 10.27 3.97208 10.27C6.67244 10.27 6.69431 10.9504 6.69431 12.9922C6.69431 15.0341 6.70292 15.7145 3.97208 15.7145C1.24125 15.7145 1.24986 15.0341 1.24986 12.9922Z" stroke="#5a5a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.80542 12.9922C9.80542 10.9504 9.82728 10.27 12.5276 10.27C15.228 10.27 15.2499 10.9504 15.2499 12.9922C15.2499 15.0341 15.2585 15.7145 12.5276 15.7145C9.79681 15.7145 9.80542 15.0341 9.80542 12.9922Z" stroke="#5a5a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        
+      Categories
+    </a>
+    <a class="round-btn" routerLinkActive="active" routerLink="/my-account/wishlist" (click)="buttonClick()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-footer icon-f-fav">
+        <defs>
+          <linearGradient id="hart-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#F9004B"/>
+            <stop offset="100%" stop-color="#ff4a80"/>
+          </linearGradient>
+        </defs>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.27417 7.33462C0.483418 4.86582 1.40756 2.04402 3.99943 1.20905C5.36279 0.769091 6.86765 1.0285 8.00109 1.88116C9.07336 1.05208 10.6335 0.772039 11.9954 1.20905C14.5873 2.04402 15.5173 4.86582 14.7273 7.33462C13.4966 11.2478 8.00109 14.262 8.00109 14.262C8.00109 14.262 2.54615 11.2935 1.27417 7.33462Z" stroke="#5a5a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.949 3.72461C11.7375 3.9796 12.2947 4.68339 12.3617 5.50951" stroke="#5a5a5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>        
+      Favourite
+    </a>
+    <!--<a class="round-btn">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-footer icon-f-feed">
+        <g clip-path="url(#clip0_5401_88058)">
+        <path d="M12.4673 0.714355H3.03246C1.77383 0.714355 0.749863 1.73832 0.749863 2.99696V12.4317C0.749863 13.6904 1.77383 14.7144 3.03246 14.7144H12.4672C13.7259 14.7144 14.7498 13.6904 14.7498 12.4318V2.99696C14.7499 1.73832 13.7259 0.714355 12.4673 0.714355ZM13.8368 12.4318C13.8368 13.1869 13.2224 13.8013 12.4673 13.8013H3.03246C2.27728 13.8013 1.6629 13.1869 1.6629 12.4318V2.99696C1.6629 2.24178 2.27728 1.62739 3.03246 1.62739H12.4672C13.2224 1.62739 13.8368 2.24178 13.8368 2.99696V12.4318H13.8368Z" fill="#5a5a5a"/>
+        <path d="M4.0977 9.99707C3.34252 9.99707 2.72813 10.6115 2.72813 11.3666C2.72813 12.1218 3.34252 12.7362 4.0977 12.7362C4.85287 12.7362 5.46726 12.1218 5.46726 11.3666C5.46726 10.6115 4.85287 9.99707 4.0977 9.99707ZM4.0977 11.8232C3.84597 11.8232 3.64117 11.6184 3.64117 11.3666C3.64117 11.1149 3.84597 10.9101 4.0977 10.9101C4.34942 10.9101 4.55423 11.1149 4.55423 11.3666C4.5542 11.6184 4.34942 11.8232 4.0977 11.8232Z" fill="#5a5a5a"/>
+        <path d="M4.0977 2.69238C3.34252 2.69238 2.72813 3.30677 2.72813 4.06195C2.72813 4.81713 3.34252 5.43152 4.0977 5.43152C7.37015 5.43152 10.0325 8.09387 10.0325 11.3663C10.0325 12.1215 10.6469 12.7359 11.402 12.7359C12.1572 12.7359 12.7716 12.1215 12.7716 11.3663C12.7716 6.58351 8.88048 2.69238 4.0977 2.69238ZM11.402 11.8228C11.1503 11.8228 10.9455 11.618 10.9455 11.3663C10.9455 7.59039 7.87357 4.51845 4.09767 4.51845C3.84595 4.51845 3.64114 4.31365 3.64114 4.06192C3.64114 3.8102 3.84595 3.60539 4.09767 3.60539C8.37702 3.60539 11.8585 7.08691 11.8585 11.3663C11.8586 11.618 11.6538 11.8228 11.402 11.8228Z" fill="#5a5a5a"/>
+        <path d="M4.0977 6.34473C3.34252 6.34473 2.72813 6.95911 2.72813 7.71429C2.72813 8.46947 3.34252 9.08386 4.0977 9.08386C5.35633 9.08386 6.3803 10.1078 6.3803 11.3665C6.3803 12.1216 6.99469 12.736 7.74987 12.736C8.50505 12.736 9.11944 12.1216 9.11944 11.3665C9.11944 8.59747 6.86669 6.34473 4.0977 6.34473ZM7.74987 11.823C7.49814 11.823 7.29334 11.6182 7.29334 11.3665C7.29334 9.60438 5.85976 8.1708 4.09767 8.1708C3.84595 8.1708 3.64114 7.96599 3.64114 7.71427C3.64114 7.46254 3.84595 7.25773 4.09767 7.25773C6.36321 7.25773 8.20637 9.10089 8.20637 11.3664C8.2064 11.6182 8.0016 11.823 7.74987 11.823Z" fill="#5a5a5a"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_5401_88058">
+        <rect width="14" height="14" fill="white" transform="translate(0.749863 0.714355)"/>
+        </clipPath>
+        </defs>
+        </svg>
+        
+      Feed
+    </a>-->
+    <a class="round-btn" routerLinkActive="active" routerLink="/my-account/profile" (click)="buttonClick()">
+      <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-footer icon-f-user">
+        <defs>
+          <linearGradient id="user-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#F9004B"/>
+            <stop offset="100%" stop-color="#ff4a80"/>
+          </linearGradient>
+        </defs>
+        <mask id="mask0_5401_88235" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="9" width="12" height="6">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 9.51855H12V14.7141H0V9.51855Z" fill="white"/>
+        </mask>
+        <g mask="url(#mask0_5401_88235)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.00071 10.5754C2.77266 10.5754 1.13629 11.0912 1.13629 12.1093C1.13629 13.1366 2.77266 13.6573 6.00071 13.6573C9.228 13.6573 10.8636 13.1415 10.8636 12.1234C10.8636 11.0961 9.228 10.5754 6.00071 10.5754ZM6.00069 14.7141C4.51659 14.7141 -0.000106812 14.7141 -0.000106812 12.1093C-0.000106812 9.787 3.42491 9.51855 6.00069 9.51855C7.48479 9.51855 12 9.51855 12 12.1234C12 14.4457 8.57571 14.7141 6.00069 14.7141Z" fill="#5a5a5a"/>
+        </g>
+        <mask id="mask1_5401_88235" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="0" width="10" height="9">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.97719 0.714355H10.0227V8.19601H1.97719V0.714355Z" fill="white"/>
+        </mask>
+        <g mask="url(#mask1_5401_88235)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.00071 1.72012C4.37873 1.72012 3.05903 2.9468 3.05903 4.4553C3.05373 5.95887 4.36358 7.18484 5.97874 7.19048L6.00071 7.69355V7.19048C7.62194 7.19048 8.94088 5.9631 8.94088 4.4553C8.94088 2.9468 7.62194 1.72012 6.00071 1.72012ZM6.00072 8.1958H5.97648C3.76283 8.18946 1.96964 6.51045 1.97721 4.45307C1.97721 2.39218 3.78177 0.713867 6.00072 0.713867C8.21892 0.713867 10.0227 2.39218 10.0227 4.45519C10.0227 6.5182 8.21892 8.1958 6.00072 8.1958Z" fill="#5a5a5a"/>
+        </g>
+        </svg>
+        
+      Account
+    </a>
+  </div>
+</div>

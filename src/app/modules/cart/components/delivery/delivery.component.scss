@@ -1,0 +1,8 @@
+.display-row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.choose_time_slot .scrollable-checkbox-item.display-row { display: flex; flex-wrap: wrap; gap: 10px;}
+.choose_time_slot .display-row > div { margin: 0; flex: 0;}

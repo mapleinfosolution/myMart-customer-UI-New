@@ -1,0 +1,33 @@
+<div class="order-page-main">
+  <div class="order-tabs pb-0">
+    <h3 class="title">My Orders</h3>
+    <ul class="order-tabs-lists">
+      <li *ngFor="let tab of orderTabs; let i = index" (click)="showTab(i, tab.status)"
+        [ngClass]="{'active': tab.active}">
+        <a href="javascript:void(0)">{{tab.title}}</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="order-tab-contents ">
+  <div class="orderlist-tab-item" [ngClass]="{'on': orderTabs[0].active}">
+    <app-order-list [orderList]="orderList" [paginationDropdown]="paginationDropdown"
+      (paginationChangeEvent)="paginatioChange($event)" [totalCount]="totalCount"></app-order-list>
+  </div>
+  <div class="orderlist-tab-item" [ngClass]="{'on': orderTabs[1].active}">
+    <app-order-list [orderList]="orderList" [paginationDropdown]="paginationDropdown"
+      (paginationChangeEvent)="paginatioChange($event)" [totalCount]="totalCount"></app-order-list>
+  </div>
+  <div class="orderlist-tab-item" [ngClass]="{'on': orderTabs[2].active}">
+    <app-order-list [orderList]="orderList" [paginationDropdown]="paginationDropdown"
+      (paginationChangeEvent)="paginatioChange($event)" [totalCount]="totalCount"></app-order-list>
+  </div>
+  <div class="orderlist-tab-item " [ngClass]="{'on': orderTabs[3].active}">
+    <app-order-list [orderList]="orderList" [paginationDropdown]="paginationDropdown"
+      (paginationChangeEvent)="paginatioChange($event)" [totalCount]="totalCount"></app-order-list>
+  </div>
+  <div class="orderlist-tab-item " [ngClass]="{'on': orderTabs[4].active}">
+    <app-order-list [orderList]="orderList" [paginationDropdown]="paginationDropdown"
+      (paginationChangeEvent)="paginatioChange($event)" [totalCount]="totalCount"></app-order-list>
+  </div>
+</div>

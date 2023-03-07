@@ -1,0 +1,45 @@
+<!-- order popups -->
+<div class="w-big product_list_img_pop">
+    <div class="">
+      <div class="">
+        <div class="modal-header">
+          <h5 class="modal-title">{{product.productname}}</h5>
+          <button type="button" class="btn-close" (click)="activeModal.dismiss('Cross click')" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <!--<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>-->
+          
+          <div class="product-gallery">                
+              <div class="swiper-container product-gal-slider swiper">
+                  <div class="swiper-wrapper">
+
+                    <div class="swiper-slide" *ngFor="let image of product.productImage"
+                    [ngStyle]="{'background-image': 'url('+ getImageUrl(image, 'originalURL')+')', 'background-size':'contain', 'background-repeat':'no-repeat', 'background-position':'center'}">
+                    <img src="assets/images/caro_thumb_trans.png" alt="" width="100%">
+                  </div>
+                      
+                  </div>
+              </div>
+          
+              <div class="swiper-container product-gal-thumbs swiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" *ngFor="let image of product.productImage"
+                    [ngStyle]="{'background-image': 'url('+ getImageUrl(image, 'originalURL')+')', 'background-size':'contain', 'background-repeat':'no-repeat', 'background-position':'center'}">
+                    <img src="assets/images/caro_thumb_trans.png" alt="" width="100%">
+                  </div>
+                      
+                  </div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+              </div>
+          
+              <a (click)="productDetailsPage()" class="btn btn-pink">Go To Product Details</a>
+          </div>
+      
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

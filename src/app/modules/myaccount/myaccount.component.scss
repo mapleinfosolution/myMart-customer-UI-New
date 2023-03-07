@@ -1,0 +1,24 @@
+.my-account-wrap {
+  padding: 24px 28px;
+  background: #f4f4f4;
+}
+.my-account-wrap .container {
+  padding: 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.user-nav-sec {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 8px 24px;
+  width: 348px;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+  .user-nav-sec { margin-right: 0; display: none;}
+  .my-account-wrap { padding: 0;}
+  
+
+}

@@ -1,0 +1,33 @@
+<section class="user-nav-item on">
+  <h3 class="user-nav-item__title">My Accounts</h3>
+  <ul class="user-nav-lists">
+    <li [routerLinkActive]="['active']"><a href="javascript:void(0)" routerLink="/my-account/profile">My Profile</a></li>
+    <li [routerLinkActive]="['active']"><a href="javascript:void(0)" routerLink="/my-account/address">Address Books</a></li>
+    <!-- <li [routerLinkActive]="['active']"><a href="javascript:void(0)" routerLink="/my-account/payment-method">My Payment Options</a></li>
+    <li [routerLinkActive]="['active']"><a href="javascript:void(0)">Voucher Pages</a></li> -->
+  </ul>
+</section>
+
+<section class="user-nav-item">
+  <h3 class="user-nav-item__title">My Orders</h3>
+  <ul class="user-nav-lists">
+    <li [routerLinkActive]="['active']"><a href="javascript:void(0)" routerLink="/my-account/my-order">My Orders</a></li>
+    <!-- <li><a href="javascript:void(0)">My Returns</a></li> -->
+    <li><a href="javascript:void(0)">My Cancellations</a></li>
+  </ul>
+</section>
+
+<!-- <section class="user-nav-item">
+  <h3 class="user-nav-item__title">My Reviews</h3>
+  <ul class="user-nav-lists">
+    <li><a href="javascript:void(0)">My Orders</a></li>
+    <li><a href="javascript:void(0)">My Returns</a></li>
+    <li><a href="javascript:void(0)">My Cancellations</a></li>
+  </ul>
+</section> -->
+
+<section class="user-nav-item" [routerLinkActive]="['active']">
+  <h3 class="user-nav-item__title" routerLink="/my-account/wishlist">My Wishlist and Followed Stores</h3>
+</section>
+
+<div class="log-out-div"><a href="javascript:void(0)" (click)="logOut()">Log Out</a></div>

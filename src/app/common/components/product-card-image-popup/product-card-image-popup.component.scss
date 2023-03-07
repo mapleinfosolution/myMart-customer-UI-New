@@ -1,0 +1,57 @@
+
+.product-gallery { max-width: 580px; margin: 0 auto;}
+.product-gal-slider {
+width: 100%;
+height: auto;
+margin: 0 0 10px 0;
+}
+.product-gal-slider .swiper-slide {
+width: auto;
+height: 320px;
+}
+.product-gal-slider .swiper-slide img {
+display: block;
+width: auto;
+height: 100%;
+margin: 0 auto;
+object-fit: contain;
+}
+
+.product-gal-thumbs {
+width: 100%;
+padding: 0;
+overflow: hidden;
+max-width: 550px; padding: 0 50px 0 50px;
+margin-bottom: 60px;
+margin-top: 20px;
+}
+.product-gal-thumbs .swiper-slide {
+width: 86px;
+height: 92px;
+text-align: center;
+overflow: hidden;
+}
+.product-gal-thumbs .swiper-slide-thumb-active {
+opacity: 1;
+}
+
+.product-gal-thumbs .swiper-slide img {
+width: auto;
+height: 100%;
+width: 86px;
+height: 92px;
+object-fit: contain;
+border: 3.2135px solid transparent;
+border-radius: 10.7117px;
+transition: all .3s;
+}
+.product-gal-thumbs .swiper-slide-thumb-active img, .product-gal-thumbs .swiper-slide:hover img {border: 3.2135px solid #EE9623;}
+.product-gal-thumbs .swiper-button-next::after, .product-gal-thumbs .swiper-button-prev::after { color: #130F26; font-size: 42px;
+}
+.product-gal-thumbs .swiper-button-next, .product-gal-thumbs .swiper-button-prev { width: 50px; height: 100%; background: #fff; 
+margin-top: 0 !important; top: 0; }
+.product_list_img_pop .btn-pink { max-width: 418px; padding: 11px 15px; width: 100%; text-align: center; font-size: 18px; 
+line-height: 26px; border-radius:10px; margin: 0 auto; display: block;}
+.product_list_img_pop .modal-dialog { max-width: 689px !important;}
+.product-gal-thumbs .swiper-button-next { right: 0;}
+.product-gal-thumbs .swiper-button-prev  { left: 0;}

@@ -1,0 +1,30 @@
+.confirmation-popup {
+  max-width: 520px;
+  padding: 22px 17px;
+}
+.actions {
+  padding-top: 15px;
+}
+.mw-164 {
+  min-width: 164px;
+}
+
+@media only screen and (max-width: 768px) {
+  .form-container .col2-auto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .form-container {
+    .form-label,
+    .form-control,
+    .preview-price .label,
+    .form-check-label.bold,
+    .data-info .title {
+      font-size: 10px;
+    }
+  }
+  .confirmation-popup {
+    padding: 10px;
+  }
+}

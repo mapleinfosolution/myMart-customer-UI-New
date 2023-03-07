@@ -1,0 +1,21 @@
+/*https://css.spritegen.com/*/
+
+.m-cart-noti, .m-email-noti, .m-logo, .m-normal-noti, .m-search, 
+.m-address-icon
+{ display: inline-block; background: url(../images/m-sprite.png) no-repeat; overflow: hidden; text-indent: -9999px; text-align: left; }
+ 
+.m-cart-noti { background-position: -0px -0px; width: 20px; height: 20px; }
+.m-email-noti { background-position: -0px -20px; width: 20px; height: 19px; }
+.m-logo { background-position: -0px -39px; width: 20px; height: 20px; }
+.m-normal-noti { background-position: -0px -59px; width: 17px; height: 21px; }
+.m-search { background-position: -0px -80px; width: 16px; height: 17px; }
+.m-address-icon { background-position: -0px -97px; width: 10px; height: 13px; }
+
+/*
+<div class="m-cart-noti"></div>
+<div class="m-email-noti"></div>
+<div class="m-logo"></div>
+<div class="m-normal-noti"></div>
+<div class="m-search"></div>
+<div class="m-address-icon"></div>
+*/

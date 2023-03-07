@@ -1,0 +1,67 @@
+<main class="user-content-area">
+  <div class="user-content-edit text-block">
+    <h3 class="primary-title">Edit Profile</h3>
+    <div class="user-profile-graphic">
+      <div *ngIf="!userDetails.profileImage" class="graphic size-md">{{showName()}}</div>
+      <img *ngIf="userDetails.profileImage" src="{{imageUrl(userDetails.profileImage)}}" alt="Profile Image" width="100" height="100" />
+      <a href="javascript:void(0)" class="btn" (click)="openInputFile('#image-input')">
+        <i class="icon icon-camera"></i>Change Photo
+      </a>
+      <input type="file" class="file-input" name="filename" #uploadEl id="image-input"
+        (change)="onSelectedImage($event)"
+      />
+    </div>
+
+    <div class="user-profile-info" [formGroup]="editForm">
+      <h4 class="primary-title-sub">Your Profile</h4>
+      <div class="form-container col2">
+        <div class="form-field">
+          <label for="">First Name</label>
+          <input type="text" name="firstname" class="form-control" placeholder="First Name" formControlName="firstname">
+        </div>
+        <div class="form-field">
+          <label for="">Last Name</label>
+          <input type="text" name="lastname" class="form-control" placeholder="Last Name " formControlName="lastname">
+        </div>
+        <div class="form-field date-field-w">
+          <label for="">Date Of Birth</label>
+          <input type="date" name="dob" class="form-control" placeholder="Date Of Birth" formControlName="dob">
+          <i class="icon icon-calender"></i>
+        </div>
+        <div class="form-field user-gender-w">
+          <h4 class="def-radio-light-label">Gender</h4>
+          <div class="def-radio form-check">
+            <input class="form-check-input" type="radio" name="gender" id="user-gender" value="male"
+              formControlName="gender">
+            <label class="form-check-label" for="user-gender"> Male  </label>
+          </div>
+          <div class="def-radio form-check">
+            <input class="form-check-input" type="radio" name="gender" id="user-gender-female" value="female"
+              formControlName="gender">
+            <label class="form-check-label" for="user-gender-female"> Female   </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="user-profile-contact">
+      <h4 class="primary-title-sub">Contact Information</h4>
+      <div class="form-container">
+        <div class="form-field email-float-inp">
+          <input type="text" name="" class="form-control" placeholder="Email" readonly>
+          <span class="floated_elm">{{userDetails.email}}<span class="link"
+              (click)="openChangeEmailPopup()">Change?</span></span>
+        </div>
+        <div class="form-field ph-float-inp">
+          <input type="text" name="" class="form-control" placeholder="Mobile Number" readonly>
+          <span class="floated_elm">+65 {{userDetails.phone}} <span class="link"
+              (click)="openChangeMobilePopup()">Change?</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="user-action">
+      <button type="reset" class="btn btn-trans" (click)="cancelClick()">Cancel</button>
+      <button type="submit" class="btn btn-green" (click)="saveClick()">Save</button>
+    </div>
+  </div>
+</main>

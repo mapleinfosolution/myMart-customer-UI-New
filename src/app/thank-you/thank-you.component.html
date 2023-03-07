@@ -1,0 +1,25 @@
+<div class="payment-status-box">
+    <div class="payment-info text-center">
+        <div class="graphic">
+            <svg width="81" height="81" viewBox="0 0 81 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M61.8363 43.4077C61.8363 58.5527 49.5588 70.8302 34.4138 70.8302C19.2687 70.8302 6.99121 58.5527 6.99121 43.4077C6.99121 28.2626 19.2687 15.9851 34.4138 15.9851" stroke="#0FD59D" stroke-width="1.88484" stroke-linecap="round" stroke-linejoin="round"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M50.9769 7.65054L52.0939 9.69182C52.2801 10.032 52.5599 10.3118 52.9001 10.4979L54.9411 11.6146C55.4291 11.8816 55.7325 12.3936 55.7325 12.9498C55.7325 13.5061 55.4291 14.0181 54.9411 14.2851L52.9023 15.4006C52.5624 15.5867 52.2827 15.8662 52.0966 16.2061L50.9766 18.251C50.7094 18.7388 50.1975 19.0419 49.6414 19.0419C49.0853 19.0419 48.5735 18.7383 48.3065 18.2505L47.1902 16.2101C47.0041 15.8701 46.7246 15.5905 46.3847 15.4043L44.3407 14.2848C43.8529 14.0177 43.5498 13.5057 43.5498 12.9496C43.5498 12.3935 43.8533 11.8817 44.3412 11.6147L46.3841 10.4969C46.7243 10.3107 47.004 10.031 47.1902 9.69078L48.3064 7.6506C48.5735 7.16261 49.0854 6.85913 49.6417 6.85913C50.1979 6.85913 50.7099 7.16256 50.9769 7.65054Z" stroke="#0FD59D" stroke-width="1.88484" stroke-linecap="round" stroke-linejoin="round"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M66.873 17.1832L68.5485 20.2451C68.8278 20.7555 69.2475 21.1751 69.7579 21.4543L72.8193 23.1293C73.5513 23.5298 74.0065 24.2977 74.0065 25.1322C74.0065 25.9666 73.5513 26.7345 72.8193 27.1351L69.7612 28.8084C69.2512 29.0874 68.8318 29.5067 68.5525 30.0166L66.8726 33.0839C66.4719 33.8156 65.704 34.2702 64.8698 34.2702C64.0356 34.2702 63.2679 33.8149 62.8675 33.0831L61.1929 30.0225C60.9139 29.5125 60.4946 29.0931 59.9847 28.8138L56.9187 27.1346C56.1871 26.7339 55.7324 25.966 55.7324 25.1318C55.7324 24.2976 56.1877 23.5299 56.9195 23.1295L59.9838 21.4527C60.4941 21.1735 60.9137 20.7539 61.1929 20.2436L62.8674 17.1833C63.2679 16.4513 64.0358 15.9961 64.8702 15.9961C65.7046 15.9961 66.4725 16.4512 66.873 17.1832Z" stroke="#0FD59D" stroke-width="1.88484" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M23.5791 44.4405L30.1818 51.0432L30.1392 51.0005L45.0357 36.104" stroke="#0FD59D" stroke-width="1.88484" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+
+        </div>
+        <h2 class="title">Payment Success</h2>
+        <p class="price-txt">QAR {{ orderDetails.totalAmount }}</p>
+        <p>You have successfully paid your order</p>
+        <p><a routerLink="/" class="btn btn-pink">Back To Home</a></p>
+    </div>
+    <div class="order-info">
+        <ul class="key-value-lists">
+            <li><span class="key">Order Number</span> <span class="val">{{ orderDetails.orderId }} <i class="icon icon-copy ml-10"></i></span></li>
+            <li><span class="key">Placed on</span> <span class="val">{{ orderDetails.orderDate | date: 'medium' }}</span></li>
+            <li><span class="key">Paid On</span> <span class="val">{{ orderDetails.orderDate | date: 'medium' }}</span></li>
+        </ul>
+        <p class="text-center"><b><a routerLink="/my-account/my-order">View Orders</a></b></p>
+    </div>
+</div>

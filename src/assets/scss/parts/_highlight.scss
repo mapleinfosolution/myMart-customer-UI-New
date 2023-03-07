@@ -1,0 +1,18 @@
+.highlight-carosual {
+    padding: 0 0px;
+    
+    .carosual-item { width: 312px; height: 133px; background-size: cover; border-radius:15px; position: relative; overflow: hidden;
+margin: 0 10px; background-repeat: no-repeat;
+        display: flex; align-items: center;
+        &:before { content: ""; position: absolute; top: 0; left: 0;right: 0px;             bottom: 0px; background: linear-gradient(180deg, rgba(216, 216, 216, 0.0001) 1.69%, #000000 98%);
+            background-blend-mode: multiply;
+            mix-blend-mode: normal;
+            opacity: 0.56;}
+        .title { font-size: $base-font; font-weight: 600; color: #fff; position: relative; margin: 0; padding: 15px 25px;
+            strong { font-size: 20px; display: block;}
+            a.link { color: #EE9623;}
+        }
+        .icon { font-size: 1.1em;}
+    }
+}
+.product-highlight { padding-bottom: 45px;}

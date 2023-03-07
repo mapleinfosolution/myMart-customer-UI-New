@@ -1,0 +1,82 @@
+<div class="wishlist-main">
+  <!-- tabs -->
+  <div class="wishlist-tabs">
+    <h3 class="title">My Wishlist and Followed Stores</h3>
+    <ul class="wishlist-tabs-lists">
+      <li (click)="show_tab('')" [ngClass]="{'active': current_wishlist}"><a href="javascript:void(0)">My Wishlist</a>
+      </li>
+      <li (click)="show_tab('past-wishlist')" [ngClass]="{'active': past_wishlist}"><a href="javascript:void(0)">Past
+          Purchase</a></li>
+      <li (click)="show_tab('followes-stores')" [ngClass]="{'active': followes_stores}"><a
+          href="javascript:void(0)">Followes Stores</a></li>
+    </ul>
+  </div>
+  <div class="wishlist-tab-contents">
+    <div class="wishlist-tab-item" [ngClass]="{'on': current_wishlist}">
+      <app-my-wishlist></app-my-wishlist>
+      <!-- <div class="wishlist-row green">
+        <div class="head">
+          <h3 class="title">Groceries</h3>
+        </div>
+        <div class="wish-conts-body">
+          <div class="item">
+            <div class="graphic col">
+              <img src="http://grocery.mymart.qa:7770/uploads//originalImage-1635755677013.png" alt="">
+            </div>
+            <div class="col info">
+              <h4 class="title">Hego NZ Black Angus Beef Ribeye</h4>
+              <span class="unit">1kg</span>
+            </div>
+            <div class="col qty">QTY : <strong>2</strong></div>
+            <div class="col price">
+              <div class="price-txt">QAR 50.33</div>
+              <span class="price-del">QAR <del>55.00</del></span>
+              <span class="pill pill-green">-2%</span>
+            </div>
+            <div class="col action">
+              <a href="javascript:void(0)" class="btn btn-secondary"><i class="icon icon-cart"></i> Add To Cart</a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="graphic col">
+              <img src="" alt="">
+            </div>
+            <div class="col info">
+              <h4 class="title">Hego NZ Black Angus Beef Ribeye</h4>
+              <span class="unit">1kg</span>
+            </div>
+            <div class="col qty">QTY : <strong>2</strong></div>
+            <div class="col price">
+              <div class="price-txt">QAR 50.33</div>
+              <span class="price-del">QAR <del>55.00</del></span>
+              <span class="pill pill-green">-2%</span>
+            </div>
+            <div class="col action">
+              <a href="javascript:void(0)" class="btn btn-secondary"><i class="icon icon-cart"></i> Add To Cart</a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="graphic col">
+              <img src="" alt="">
+            </div>
+            <div class="col info">
+              <h4 class="title">Hego NZ Black Angus Beef Ribeye</h4>
+              <span class="unit">1kg</span>
+            </div>
+            <div class="col qty">QTY : <strong>2</strong></div>
+            <div class="col price">
+              <div class="price-txt">QAR 50.33</div>
+              <span class="price-del">QAR <del>55.00</del></span>
+              <span class="pill pill-green">-2%</span>
+            </div>
+            <div class="col action">
+              <a href="javascript:void(0)" class="btn btn-secondary"><i class="icon icon-cart"></i> Add To Cart</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="wishlist-tab-item" [ngClass]="{'on': past_wishlist}">2</div>
+    <div class="wishlist-tab-item" [ngClass]="{'on': followes_stores}">3</div>
+  </div>
+</div>

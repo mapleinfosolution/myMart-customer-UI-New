@@ -1,0 +1,99 @@
+<ng-container>
+  <div class="modal-body">
+    <div class="account-delivery-sec text-block">
+
+      <div class="address-options">
+        <div class="address-options-item" [ngClass]="{'active': addressForm.value.Type=='Home'}"
+          (click)="changeType('Home')">
+          <span class="icon icon-home"></span>
+          <h3 class="label">House</h3>
+        </div>
+
+        <div class="address-options-item" (click)="changeType('Office')"
+          [ngClass]="{'active': addressForm.value.Type=='Office'}">
+          <span class="icon icon-office"></span>
+          <h3 class="label">Office</h3>
+        </div>
+
+        <div class="address-options-item" (click)="changeType('Apartment')"
+          [ngClass]="{'active': addressForm.value.Type=='Apartment'}">
+          <span class="icon icon-apartment"></span>
+          <h3 class="label">Apartment</h3>
+        </div>
+      </div>
+
+      <div class="location-area">
+        <i class="icon icon-marker cursor-pointer" (click)="enableMapView()"></i> {{addressForm.value.Address}}
+      </div>
+      <div *ngIf="submitted && !addressForm.value.Address" class="invalid-feedback text-center">
+        <div *ngIf="!addressForm.value.Address">Select the address</div>
+      </div>
+
+      <div class="edit-address-details" [formGroup]="addressForm">
+        <h4 class="primary-title-sub">Your detail address </h4>
+        <div class="form-container col2">
+          <div class="form-field">
+            <label for="">House / Building*</label>
+            <input type="text" name="HouseNo" class="form-control" placeholder="House" formControlName="HouseNo">
+            <div *ngIf="submitted && f.HouseNo.errors" class="invalid-feedback">
+              <div *ngIf="f.HouseNo.errors.required">House / Building is required</div>
+            </div>
+          </div>
+          <div class="form-field" *ngIf="addressForm.value.Type=='Office'">
+            <label for="">Office No</label>
+            <input type="text" name="BuildingName" class="form-control" placeholder="Office No"
+              formControlName="BuildingName">
+          </div>
+          <div class="form-field" *ngIf="addressForm.value.Type=='Apartment'">
+            <label for="">Apartment No</label>
+            <input type="text" name="BuildingName" class="form-control" placeholder="Apartment No"
+              formControlName="BuildingName">
+          </div>
+
+        </div>
+
+        <div class="form-container">
+
+          <div class="form-field">
+            <label for="">Area/Street</label>
+            <input type="text" name="AreaStreet" class="form-control" placeholder="Area/Street"
+              formControlName="AreaStreet">
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="form-field">
+            <label for="">Additional Directions (Optional)</label>
+            <input type="text" name="AdditionalDirection" class="form-control"
+              placeholder="Street, House number, Apartment, Building etc" formControlName="AdditionalDirection">
+          </div>
+        </div>
+
+      </div>
+      <div class="edit-personal-details" [formGroup]="addressForm">
+        <h4 class="primary-title-sub">Personal Information </h4>
+        <div class="form-container col2">
+          <div class="form-field">
+            <label for="">Name</label>
+            <input type="text" name="Name" class="form-control" placeholder="Name" formControlName="Name">
+            <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+              <div *ngIf="f.Name.errors.required">Name is required</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="">Phone Number</label>
+            <input type="text" name="MobileNo" class="form-control" placeholder="Phone no" formControlName="MobileNo">
+            <div *ngIf="submitted && f.MobileNo.errors" class="invalid-feedback">
+              <div *ngIf="f.MobileNo.errors.required">Phone no is required</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="user-action">
+        <button type="reset" class="btn btn-trans" (click)="cancelClick()">Cancel</button>
+        <button type="submit" class="btn btn-green" (click)="saveClick()">Save</button>
+      </div>
+    </div>
+  </div>
+</ng-container>

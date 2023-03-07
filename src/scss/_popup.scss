@@ -1,0 +1,146 @@
+.modal-add-address, .modal-w-924  {
+    .modal-dialog { max-width: 923px;}
+    .modal-header .modal-title {font-weight: 600; font-size: 18px;  line-height: 26px;}
+    .btn-close { margin-right: 1px;
+        &:focus, &:active { outline: none;}
+    }
+    .modal-content { padding: 0 15px;}
+    .modal-content  .modal-content { padding: 0; border: none;}
+}
+
+.address-choose-type {
+    border: 1px solid #E0E0E0;
+    padding: 4px 0;
+    border-radius: 10px;
+    display: flex; margin-bottom: 8px; position: relative;
+    .btn {
+        display: inline-block; flex: 1 1 auto; margin: 0 4px;
+        border-radius: 10px;
+        padding: 13px; font-weight: 600;
+        font-size: 16px;
+        line-height: 24px; color: #9A9A9A;
+        background: transparent;
+        position: relative; z-index: 2;
+        
+        &.hovered {
+            color: #F9004B;
+        }
+        
+    }
+    .indicator { position: absolute; z-index: 1; background: rgba(249, 0, 75, 0.2); border-radius: 10px; transition: all .3s;}
+    /*
+    .active-bg {
+        background: rgba(249, 0, 75, 0.2);
+        color: #F9004B;
+        height: 52px;
+    }
+    */
+}
+
+.choose_via_map {
+    position: relative;
+    background-color: #eee; z-index: 9;
+    .options {
+        position: absolute; width: 100%; top: 0; left: 0; padding: 17px 30px;
+    }
+    .custom-location-box, .location-search-input {background: #FFFFFF; box-shadow: 0px 4px 8px #E5E5E5;  border-radius: 5px; margin-bottom: 21px;}
+    .custom-location-box {font-weight: normal; font-size: 16px; line-height: 28px; color: #000000; padding: 18px 30px; display: flex; align-items: center;
+        .icon { margin-right: 16px;}
+    }
+    .location-search-input { display: flex; position: relative;
+        .form-control { border: none; background: transparent; height: 60px; flex: 1 1 auto; padding-left: 65px; color: #000000;
+            &::placeholder { color: #000000;}
+        }
+        .icon { position: absolute; top: 50%; left: 30px; transform: translate(0, -50%);}
+    }
+}
+
+/* choose-via-blue-plate */
+.choose-via-blue-plate {
+    .sub-title {font-weight: 600;  font-size: 16px;  line-height: 24px;}
+    p {font-weight: normal;  font-size: 14px;  line-height: 18px; color: #9A9A9A;}
+    .form-container{
+        &.inline { display: flex; }
+        .form-field { flex: 1 1 auto; margin: 3px;
+            label {font-weight: normal;  font-size: 12px;   line-height: 18px; color: #9A9A9A; margin-bottom: 0;}
+            .form-control { font-weight: normal;  font-size: 12px;   line-height: 18px; color: #898989; 
+                &::placeholder {color: #898989;}
+                padding: 14px 10px 12px 0; border: none; border-bottom: 2px solid #EEEEEE;;}
+        }
+    } 
+    .map { min-height: 274px; background-color: #eee;}
+}
+
+.modal-footer { padding: 21px 24px;
+    .btn { padding: 11px 15px; border-radius: 10px; background: #fff; font-weight: 600;  font-size: 14px;  line-height: 18px;
+        color: #5A5A5A; min-width: 164px;
+        &:hover {
+            background-color: #eee;
+        }
+        &.next { background: #27AE60; color: #fff;
+            &:hover { background: lighten( #27AE60, 10%);}
+        }
+        & + & { margin-left: 5px;}
+    }
+}
+
+.modal-add-address agm-map { height: 272px; opacity: .5;}
+.modal-add-address agm-map.big-map { height: 444px;}
+
+
+/* product category popup */
+.product-full-modal-pop { position: fixed; width: 100%; height: 100%; background: rgba(0, 0, 0, .5); top: 0; left: 0; z-index: 99999;
+    overflow: auto; 
+    .pop-bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
+    .modal-inner { background: #fff; max-width: 1057px; width: 90%; border-radius: 8px;margin: 35px auto; 
+        position: relative; z-index: 2;}
+    .cross-btn { position: absolute; width: 24px; height: 24px; right: 12px; top: 18px; z-index: 2; text-align: center;}
+    .swiper-wrapper { height: 530px; margin-bottom: 50px;
+        .swiper-slide { display: flex; justify-content: center; align-items: center;}
+    }
+    .swiper-pagination-w .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+        border-radius: 999px !important;
+    }
+     .swiper-pagination-w .swiper-pagination-bullets-dynamic .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        width: 20px !important;
+        background: #EE9623 !important;
+     }
+     .swiper-pagination-w { align-items: center; display: flex;}
+     .swiper-pagination-w .swiper-pagination  { position: static !important; transform: translate(0) !important;}
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    .address-choose-type .btn { font-size: 12px; line-height: 12px;}
+    .choose_via_map .custom-location-box {font-size: 12px;   line-height: 18px; padding: 16px 15px;}
+    .choose_via_map .location-search-input .form-control {font-size: 12px;   line-height: 18px; height: 50px; padding-left: 50px;}
+    .choose_via_map .location-search-input .icon { left: 16px;}
+    .choose-via-blue-plate .sub-title { font-size: 14px;}
+    .choose-via-blue-plate p { font-size: 10px;
+        line-height: 15px;}
+        .choose-via-blue-plate .form-container .form-field label {font-size: 10px;
+            line-height: 15px;}
+            .choose-via-blue-plate .form-container .form-field .form-control {font-size: 14px; font-weight: 600;
+                line-height: 18px; color: #5A5A5A; 
+                &::placeholder { color: #5A5A5A;}
+            }
+
+            .modal-add-address .modal-header .modal-title, .modal-w-924 .modal-header .modal-title { font-weight: 600;
+                font-size: 16px;
+                line-height: 24px;}
+                .modal-add-address .modal-content, .modal-w-924 .modal-content {
+                    padding: 0px 13px;
+                }
+
+                .modal app-header-address-selection .modal-body { padding: 15px 0 0 0 !important;}
+                .modal-footer { padding:13px 0; border-top: none;}
+            .modal-footer .btn { min-width: auto; margin-left:0; margin-right:0; padding: 10px 15px;}
+            .modal-footer .btn + .btn { margin-left: 10px}
+            .modal-footer .cancel { flex: 0 0 auto; background:#F9004B; color: #fff; min-width: 90px;
+                &:hover {
+                    background: lighten(#F9004B, 15%);
+                }
+            }
+            .modal-footer .next { flex: 1 1 auto}
+}

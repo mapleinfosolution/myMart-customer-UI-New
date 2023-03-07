@@ -1,0 +1,6 @@
+<mymart-child-category-menu-list
+  *ngFor="let category of appitems | slice:0:numCatItems" 
+  [childData]="category"
+  (categoryClickEvent)="categoryClickEvent($event)"
+></mymart-child-category-menu-list>
+<span [hidden]="appitems.length < 6" class="more-links" (click)="catExpand()">{{numCatItems  >  numCatItemsOld ? 'View Less' : 'View More'}}</span>

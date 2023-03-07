@@ -1,0 +1,14 @@
+<div class="form-container confirmation-popup">
+  <h2>{{confirmationData.title}}</h2>
+  <div class="">
+    <h4>{{confirmationData.message}}</h4>
+  </div>
+  <div class="actions elm-right d-flex top-line">
+    <button class="btn btn-trans mw-164" type="reset" (click)="cancelClick()">
+      {{confirmationData.cancelTitle}}
+    </button>
+    <button class="btn btn-green mw-164" type="submit" (click)="submitClick()">
+      {{confirmationData.okTitle}}
+    </button>
+  </div>
+</div>

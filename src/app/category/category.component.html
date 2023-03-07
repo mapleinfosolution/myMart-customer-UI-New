@@ -1,0 +1,110 @@
+<div class="category-page">
+  <div class="site-wrap">
+    <div class="category-page-wrap">
+
+      <div class="container">
+
+        <div class="d-flex category-tabs">
+
+          <div class="nav flex-column nav-pills custom_scrollbar">
+
+            <h3 class="title">Categories</h3>
+
+
+            <div *ngFor="let category of categoryList" class="nav-item">
+
+              <!-- =============================== Category Buttons ==================================== -->
+
+              <!-- <button class="nav-link" data-bs-toggle="tab"
+                      [attr.data-bs-target]="'#tab_'+category._id" (click)="activeCategoryId=category._id">
+                <div class="graphic">
+                  <img src="{{imageBasePath+category.categoryImageId?.originalURL}}">
+                </div>
+                {{category.categoryName}}
+              </button> -->
+
+              <button class="nav-link" [ngClass]="activeCategoryId===category._id? 'active': ''"
+                (click)="activeCategoryId=category._id">
+                <div class="graphic">
+                  <i class="icon icon-cat-outline" *ngIf="category.categoryImageId?.originalURL ==  null"></i>
+                  <img *ngIf="category.categoryImageId?.originalURL !=  null"
+                    src="{{imageBasePath+category.categoryImageId?.originalURL}}" loading="lazy">
+                </div>
+                {{category.categoryName}}
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="tab-content custom_scrollbar">
+
+            <!-- =================================== Category List ======================================= -->
+
+            <div *ngFor="let category of categoryList" class="tab-pane fade show"
+              [ngClass]="activeCategoryId===category._id? 'active': ''" [attr.id]="'tab_'+category._id">
+
+              <h2 class="title">{{category.categoryName}}</h2>
+
+              <ul class="list-group cat-first-lists">
+
+                <!-- ================================ Subcategory List ==================================== -->
+
+                <li class="list-group-item" *ngFor="let subCat of category.children">
+
+                  <a class="collapse-link" data-bs-toggle="collapse" [attr.href]="'#tab_'+subCat._id">
+                    <div class="graphic">
+                      <i class="icon-placeholder icon-cat-outline"
+                        *ngIf="subCat.categoryImageId?.originalURL ==  null"></i>
+                      <img class="cat-thumbs" [src]="imageBasePath+subCat.categoryImageId?.originalURL" alt=""
+                        *ngIf="subCat.categoryImageId?.originalURL !=  null" loading="lazy">
+                    </div>
+                    {{subCat.categoryName}}
+                    <div class="icon fa fa-angle-down"></div>
+                  </a>
+
+                  <div class="collapse cat-second-lists-w" [attr.id]="'tab_'+subCat._id">
+
+                    <ul class="cat-second-lists d-flex">
+
+                      <!-- ======================== Child Subcategory List ================================= -->
+
+                      <li *ngFor="let childSubCat of subCat.children">
+                        <a href="javascript:void(0)" [title]="childSubCat.categoryName" (click)="goToProductList(childSubCat.categoryName)">
+                          <div class="graphic">
+                            <i class="icon-placeholder icon-cat-outline"
+                              *ngIf="subCat.categoryImageId?.originalURL ==  null"></i>
+                            <img [src]="imageBasePath+subCat.categoryImageId?.originalURL" alt=""
+                              *ngIf="subCat.categoryImageId?.originalURL !=  null">
+                          </div>
+                          {{stringSlice(childSubCat.categoryName, 20)}}
+                        </a>
+                      </li>
+
+                    </ul>
+
+                  </div>
+
+                </li>
+
+              </ul>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+</div>

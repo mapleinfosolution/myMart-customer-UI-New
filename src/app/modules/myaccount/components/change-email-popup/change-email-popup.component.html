@@ -1,0 +1,60 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Verify Email</h4>
+  <button type="button" class="close" aria-label="Close" (click)="cancelClick()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="verifi-email-setp-1" *ngIf="changeState == 'step1'">
+    <div class="very-fy-info">
+      <div class="graphic">
+        <svg width="69" height="80" viewBox="0 0 69 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M33.4124 79.6546C33.8553 79.8861 34.3507 80.0037 34.846 79.9998C35.3413 79.9959 35.8326 79.8743 36.2796 79.639L50.5511 72.0098C54.5982 69.8525 57.7674 67.4402 60.2399 64.6318C65.6159 58.5128 68.5516 50.7033 68.4992 42.6505L68.3301 16.0879C68.314 13.0284 66.3045 10.2984 63.3326 9.30607L36.7829 0.398257C35.1842 -0.143037 33.4325 -0.13127 31.862 0.425714L5.41298 9.65124C2.4572 10.6828 0.48399 13.4325 0.500098 16.4959L0.66923 43.0389C0.72158 51.1034 3.7579 58.8776 9.22248 64.9338C11.7192 67.703 14.9166 70.08 19.008 72.202L33.4124 79.6546ZM29.6341 48.4348C30.2301 49.0074 31.0033 49.2898 31.7765 49.282C32.5496 49.2781 33.3188 48.9878 33.9067 48.4073L49.5031 33.0314C50.675 31.8743 50.6629 30.0151 49.4789 28.8737C48.291 27.7322 46.3782 27.7401 45.2064 28.8972L31.7322 42.1785L26.2152 36.8754C25.0273 35.734 23.1185 35.7457 21.9426 36.9029C20.7708 38.06 20.7829 39.9192 21.9708 41.0606L29.6341 48.4348Z"
+            fill="#27AE60" />
+        </svg>
+      </div>
+      <h3 class="title">Verify Now</h3>
+      <p>To protect your account security, We need to verify your identity</p>
+
+    </div>
+    <div class="modal-action">
+      <span class="btn btn-pink" (click)="goSecondStep()">Verify Through Email</span>
+    </div>
+  </div>
+
+  <div class="verifi-email-setp-2" *ngIf="changeState == 'step2'">
+    <div class="verifi-email-form" [formGroup]="emailChangeForm">
+      <div class="head"><i class="icon"><svg width="41" height="36" viewBox="0 0 41 36" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M30.378 0C33.06 0 35.64 1.06 37.538 2.962C39.438 4.86 40.5 7.42 40.5 10.1V25.9C40.5 31.48 35.96 36 30.378 36H10.62C5.038 36 0.5 31.48 0.5 25.9V10.1C0.5 4.52 5.018 0 10.62 0H30.378ZM33.5599 13.0797L33.7199 12.9197C34.1979 12.3397 34.1979 11.4997 33.6979 10.9197C33.4199 10.6217 33.0379 10.4397 32.6399 10.3997C32.2199 10.3777 31.8199 10.5197 31.5179 10.7997L22.4999 17.9997C21.3399 18.9617 19.6779 18.9617 18.4999 17.9997L9.49986 10.7997C8.87786 10.3397 8.01786 10.3997 7.49986 10.9397C6.95986 11.4797 6.89986 12.3397 7.35786 12.9397L7.61986 13.1997L16.7199 20.2997C17.8399 21.1797 19.1979 21.6597 20.6199 21.6597C22.0379 21.6597 23.4199 21.1797 24.5379 20.2997L33.5599 13.0797Z"
+              fill="#EE9623" />
+          </svg>
+        </i> We Will send One Time Code to your email</div>
+      <div class="form-container">
+        <div class="form-rows">
+          <div class="form-field">
+            <label for="" class="form-label">E-Mail Address</label>
+            <input class="form-control bottom-line-inp email-field" type="email" placeholder="Enter email"
+              name="email" formControlName="email" />
+          </div>
+        </div>
+
+        <div class="form-rows">
+          <div class="form-field">
+            <label for="" class="form-label">SMS Code</label>
+            <div class="inp-float">
+              <input class="form-control bottom-line-inp " type="number" placeholder="Your OTP code here"
+                name="otp" formControlName="otp" />
+              <button class="btn btn-light-gary count" (click)="sendOtp()" [disabled]="startTimer">{{ (startTimer) ? timerValue : 'Send'}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-action">
+          <button class="btn btn-pink" (click)="changeEmail()">Verify Code</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

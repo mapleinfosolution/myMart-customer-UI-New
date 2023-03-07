@@ -1,0 +1,24 @@
+.setting-menu-mobile {
+    ul { list-style: none; margin: 0; padding:0  23px; background-color: #fff;
+        li { 
+            a { display: block; padding: 15px 0; font-weight: 400;
+                font-size: 14px;
+                line-height: 18px; color: #5A5A5A;
+                position: relative;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    width: 6px;
+                    height: 6px;
+                    border-top: 1px solid #091C3F;
+                    border-right: 1px solid #091C3F;
+                    transform: translate(0, -50%) rotate(45deg);
+                }
+            }
+        }
+        li:not(:last-child) { border-bottom: 1px solid rgba(9, 28, 63, 0.08) ;
+        }
+    }
+}

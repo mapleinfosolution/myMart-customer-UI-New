@@ -1,0 +1,23 @@
+$browser-context: 16; // Default
+$xs: "480px";
+$sm: "600px";
+$md: "799px";
+$lg: "1010px";
+$xl: "1280px";
+
+// Fonts 
+$base-font : 12px;
+$base-font-2 : 13px;
+$base-font-4 : 14px;
+$base-font-3 : 22px;
+$primary-font-size:24px;
+$font-family-primary : 'Poppins', sans-serif;
+$container-width: 1188px;
+
+//colors
+
+// Assets
+$asset-base-path: '../' !default;
+
+$font-primary: 600 14px $font-family-primary;
+

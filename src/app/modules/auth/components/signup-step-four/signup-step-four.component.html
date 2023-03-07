@@ -1,0 +1,47 @@
+<div class="auth-form-wrap-outer small m-center mt-65 mb-65">
+  <!-- <p class="mb-40"><a href="javascript:void(0)" class="back-link"> <i class="icon icon-arrow-right-yellow mr-15 flip"></i> Back to
+      Register</a></p> -->
+  <div class="auth-form-wrap small m-center  mb-32 bg-white">
+    <h2 class="primary-title d-flex flex-wrap justify-content-between">Enter Password</h2>
+    <div class="form-container">
+      <form autocomplete="off" [formGroup]="formData">
+        <input id="password" style="display:none" type="password" name="fakepasswordremembered">
+        <div class="form-rows">
+          <div class="form-field">
+            <label for="" class="form-label">Password</label>
+            <app-password-input 
+              placeholder="Enter Password" 
+              formControlName="password"
+            ></app-password-input>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.emailMobileInvalid">Enter valid password</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-rows">
+          <div class="form-field">
+            <label for="" class="form-label">Confirm Password</label>
+            <div class="float-inp">
+              <i class="icon icon-lock-outline"></i>
+              <app-password-input 
+                placeholder="Enter Confirm Password" 
+                formControlName="confirmPassword"
+              ></app-password-input>
+              <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">Confirm password is required</div>
+                <div *ngIf="f.confirmPassword.errors.mustMatch">Confirm password not matched</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-rows mb-20">
+          <div class="form-field">
+            <button type="submit" class="btn btn-primary btn-block" (click)="clickNext()">Confirm</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <br /><br /><br />
+</div>

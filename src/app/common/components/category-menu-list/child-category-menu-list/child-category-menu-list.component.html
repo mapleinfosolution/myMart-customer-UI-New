@@ -1,0 +1,15 @@
+<ul class="ms-cat-accordion ms-cat-accordion--animated">
+  <li class="ms-cat-accordion__item has-children">
+    <input class="ms-cat-accordion__input" type="checkbox" name="{{category.categoryName}}" id="{{category.categoryName}}" [(ngModel)]="category.active">
+    <label class="ms-cat-accordion__label ms-cat-accordion__label--icon-folder" for="{{category.categoryName}}" (click)="categoryClick(childData)">
+      <span>{{category.categoryName}} <span class="category-count">{{category.countProducts}}</span></span>
+    </label>
+    <ng-container *ngIf="category.children && category.children.length && category.active">
+      <mymart-child-category-menu-list
+        *ngFor="let childCategory of category.children"
+        [childData]="childCategory"
+        (categoryClickEvent)="subCategoryClickEvent($event)">
+      </mymart-child-category-menu-list>
+    </ng-container>
+  </li>
+</ul>

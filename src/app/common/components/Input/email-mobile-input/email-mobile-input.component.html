@@ -1,0 +1,15 @@
+<div class="float-inp">
+  <i class="icon icon-email-outline" *ngIf="iconChange"></i>
+  <i class="icon icon-phone-call" *ngIf="!iconChange"></i>
+  <input 
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="fieldValue"
+    [disabled]="disabled"
+    (input)="onChange($any($event.target).value)" 
+    (blur)="onTouched()"
+    (keyup)="inputChange($event)"
+    (focus)="onFocus()"
+    class="form-control bottom-line-inp has-icon"
+  />
+</div>
