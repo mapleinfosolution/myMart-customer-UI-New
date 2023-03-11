@@ -45,7 +45,7 @@
     .shop-filter .btn-groups .btn { color: #636363; min-width: 90px; border-radius: 8px;} 
     .shop-filter .btn-groups .btn.selected, .shop-filter .btn-groups .btn:hover { background: #ed9623; color: #fff;}
     .shop-filter .sinfo { margin-bottom: 8px;}
-    .popular-cat .head { display: none;}
+    .popular-cat .head { display: block;}
     .popular-cat-lists-wrap { overflow: auto; overflow: -moz-scrollbars-none; margin: 0;
         -ms-overflow-style: none;  /* Internet Explorer 10+ */
         scrollbar-width: none; 

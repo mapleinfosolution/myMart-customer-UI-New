@@ -75,10 +75,17 @@ export class CommonStoreService {
       (res: any) => {
         this.setCartListCount(res.count.totalCart);
         let elm: any = document.getElementById('header-cart-badge');
+        let elm2: any = document.getElementById('header-cart-badge-mob');
         if (elm) {
           elm.classList.add('zoom-in');
           setTimeout(() => {
             elm.classList.remove('zoom-in');
+          }, 3000);
+        }
+        if (elm2) {
+          elm2.classList.add('zoom-in');
+          setTimeout(() => {
+            elm2.classList.remove('zoom-in');
           }, 3000);
         }
 

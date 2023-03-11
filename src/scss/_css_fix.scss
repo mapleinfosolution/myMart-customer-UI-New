@@ -842,6 +842,9 @@ a, .link { cursor: pointer;}
 	max-width: 350px;
 }
 
+
+.mobile-view-header {box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);}
+
 @media only screen and (max-width: 992px) {
     app-address-selection { height: 81vh; display: flex;  flex-direction: column;}
     .voucher-code-w { position: relative; z-index: 5;}
